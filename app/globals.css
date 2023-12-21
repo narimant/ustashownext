@@ -2,26 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/fonts/vazir/Vazirmatn[wght].woff2') format('woff2 supports variations'),
+       url('/fonts/vazir/Vazirmatn[wght].woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+body{font-family: Vazirmatn;}
+
+.sliderContainer{
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+.sliderContainer::-webkit-scrollbar{
+  height: 0;
+  width: 0;
+}
+.sliderItem{
+  scroll-snap-align: start;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@font-face {
+  font-family: 'dana';
+  font-style: normal;
+  font-weight: 400;
+  src: local('dana'), url('https://fonts.cdnfonts.com/s/87601/dana regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'dana';
+  font-style: normal;
+  font-weight: 100;
+  src: local('dana'), url('https://fonts.cdnfonts.com/s/87601/dana thin.woff') format('woff');
+}
+@font-face {
+  font-family: 'dana';
+  font-style: normal;
+  font-weight: 200;
+  src: local('dana'), url('https://fonts.cdnfonts.com/s/87601/dana extralight.woff') format('woff');
+}
+@font-face {
+  font-family: 'dana';
+  font-style: normal;
+  font-weight: 300;
+  src: local('dana'), url('https://fonts.cdnfonts.com/s/87601/dana light.woff') format('woff');
+}
+@font-face {
+  font-family: 'dana';
+  font-style: normal;
+  font-weight: 500;
+  src: local('dana'), url('https://fonts.cdnfonts.com/s/87601/dana medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'dana';
+  font-style: normal;
+  font-weight: 600;
+  src: local('dana'), url('https://fonts.cdnfonts.com/s/87601/dana demibold.woff') format('woff');
+}
+@font-face {
+  font-family: 'dana';
+  font-style: normal;
+  font-weight: 700;
+  src: local('dana'), url('https://fonts.cdnfonts.com/s/87601/dana bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'dana';
+  font-style: normal;
+  font-weight: 800;
+  src: local('dana'), url('https://fonts.cdnfonts.com/s/87601/dana extrabold.woff') format('woff');
 }
