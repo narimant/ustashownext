@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import SlideSection from './SlideSection';
 import { MdArrowBackIos } from "react-icons/md";
-import { IoIosArrowForward } from "react-icons/io";
+
 const ProductSlider = ({title}) => {
 
     return (

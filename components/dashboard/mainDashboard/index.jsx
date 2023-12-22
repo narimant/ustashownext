@@ -19,9 +19,14 @@ const MainDashboard = () => {
    },[contentChanger])
 
     return (
-        <div className='container mx-auto'>
-           <DashboardCtrl   setContentChanger={setContentChanger}/> 
-           <div>{details}</div>
+        <div className='w-full grid grid-cols-6'>
+            <div className='col-span-1'>
+            <DashboardCtrl   setContentChanger={setContentChanger} /> 
+            </div>
+          
+           <div className='col-span-5'>
+            {details}
+            </div>
         </div>
     );
 };

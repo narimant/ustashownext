@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -20,7 +21,12 @@ const RegisterForm = () => {
   } = useForm({});
   return (
     <div className="container mx-auto flex justify-center items-center p-8">
-      <div className="bg-white rounded-lg shadow-light w-96 h-auto ">
+      <div className="bg-white rounded-lg shadow-light w-96 h-auto flex justify-center items-center flex-col ">
+        <div className="my-5">
+          <Link href="/">
+            <Image src="/images/logo.png"  width={120} height={60} alt="logo" priority={true}  />
+          </Link>
+        </div>
         <h3 className="text-2xl text-center py-3">عضویت</h3>
         <p className="text-center">
             قبلا ثبت نام کرده اید ؟ 
