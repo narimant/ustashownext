@@ -15,7 +15,7 @@ const Footer = () => {
     <footer className="w-full bg-white shadow-light mt-8">
       <div className="container mx-auto grid  grid-cols-3 p-8">
         <div className="flex flex-col justify-center items-center p-8 text-center  text-sm">
-          <Image src="/images/logo.jpg" width={150} height={100} alt="logo" />
+          <Image src="/images/logo.jpg" width={100} height={80} alt="logo" className="w-auto h-auto" />
           <p className="px-12 pt-4">
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
             استفاده از طراحان گرافیک است
@@ -27,13 +27,13 @@ const Footer = () => {
             <h3 className="text-xl">دسترسی سریع</h3>
             <ul className="pt-4 text-sm">
               <li >
-                <Link href="#" className="flex justify-start items-center gap-1  py-1 hover:text-purple-700">
+                <Link href="/about" className="flex justify-start items-center gap-1  py-1 hover:text-purple-700">
                   <IoIosArrowBack size={12}/>
                   <span>درباره ما</span>
                 </Link>
               </li>
               <li>
-              <Link href="#" className="flex justify-start items-center gap-1  py-1  hover:text-purple-700">
+              <Link href="/blog" className="flex justify-start items-center gap-1  py-1  hover:text-purple-700">
               <IoIosArrowBack size={12}/>
                   <span>وبلاگ</span>
                 </Link>
@@ -45,7 +45,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-              <Link href="#" className="flex justify-start items-center  py-1  hover:text-purple-700">
+              <Link href="/contact" className="flex justify-start items-center  py-1  hover:text-purple-700">
               <IoIosArrowBack size={12}/>
                   <span>تماس با ما</span>
                 </Link>
@@ -56,19 +56,19 @@ const Footer = () => {
             <h3 className="text-xl">راهنمای خرید</h3>
             <ul className="text-sm pt-4">
               <li>
-              <Link href="#" className="flex justify-start items-center gap-1  py-1  hover:text-purple-700">
+              <Link href="/help" className="flex justify-start items-center gap-1  py-1  hover:text-purple-700">
               <IoIosArrowBack size={12}/>
                   <span>سوالات متداول</span>
                 </Link>
               </li>
               <li>
-              <Link href="#" className="flex justify-start items-center gap-1  py-1  hover:text-purple-700">
+              <Link href="/help" className="flex justify-start items-center gap-1  py-1  hover:text-purple-700">
               <IoIosArrowBack size={12}/>
                   <span>چگونه خرید کنم؟</span>
                 </Link>
               </li>
               <li>
-              <Link href="#" className="flex justify-start items-center gap-1 py-1  hover:text-purple-700">
+              <Link href="/help" className="flex justify-start items-center gap-1 py-1  hover:text-purple-700">
               <IoIosArrowBack size={12}/>
                   <span>قوانین استفاده از محصولات</span>
                 </Link>
@@ -83,6 +83,7 @@ const Footer = () => {
             width={150}
             height={150}
             alt="licens"
+            className="w-auto h-auto"
           />
           <Image
             src="/images/licens/2.png"
@@ -98,7 +99,7 @@ const Footer = () => {
         </p>
         <button
           onClick={() => goTopCtrl()}
-          className="py-4 px-4 bg-purple-100 text-purple-500 transition-all duration-500 ease-in-out hover:bg-purple-600 hover:text-purple-100 rounded-md shadow-light font-light"
+          className=" fixed bottom-5 left-5 py-4 px-4 bg-purple-100 text-purple-500 transition-all duration-500 ease-in-out hover:bg-purple-600 hover:text-purple-100 rounded-md shadow-light font-light"
         >
         
           <FaArrowUp />

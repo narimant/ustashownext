@@ -11,11 +11,13 @@ const Header = () => {
     <div className="w-full shadow-light border-b border-gray-200 bg-white ">
       <div className="container flex justify-between mx-auto py-4">
         <div className="flex justify-start items-center gap-4 py-4">
-          <Image src={logo} width={100} height={50} alt="logo" className="w-16 h-auto"/>
+          <Link href="/" ><Image src={logo} width={60} height={40} alt="logo" className="w-auto h-auto"/></Link>
           <nav>
             <ul className="flex justify-start items-center gap-4">
               <li>
-                <Link href="#" className="hover:text-purple-600">صفحه اصلی</Link>
+                <Link href="/" className="hover:text-purple-600">
+                  صفحه اصلی
+                  </Link>
               </li>
               <li>
                 <Link href="#" className="hover:text-purple-600"> بازی کامپیوتری</Link>
@@ -24,7 +26,7 @@ const Header = () => {
                 <Link href="#" className="hover:text-purple-600"> طرح گرافیکی</Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-purple-600"> وبلاگ</Link>
+                <Link href="/blog" className="hover:text-purple-600"> وبلاگ</Link>
               </li>
             </ul>
           </nav>
@@ -45,14 +47,14 @@ const Header = () => {
         
 
           <Link
-            href="#"
+            href="/myacount"
             className=" inline-block bg-purple-400 p-2 text-white rounded-lg"
           >
             <FaRegUser className=" h-6 w-6" />
           </Link>
 
           <Link
-            href="#"
+            href="cart"
             className=" inline-block bg-green-400 p-2 text-white rounded-lg"
           >
      

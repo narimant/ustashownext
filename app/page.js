@@ -5,9 +5,13 @@ import MiddleBanner from '@/components/middle-banner'
 
 import GraphicSlider from '@/components/sliders/graphic-slider'
 import ArticleSlider from '@/components/sliders/article-slider'
+import Header from '@/components/header'
+import Footer from '@/components/footer'
 
 export default function Home() {
   return (
+    <>
+
     <main>
       <div className='my-8'>
       <MainSlider />
@@ -26,5 +30,7 @@ export default function Home() {
 
     <ArticleSlider title="آخرین مقالات" />
     </main>
+
+    </>
   )
 }

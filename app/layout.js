@@ -14,9 +14,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir='rtl'>
       <body className='bg-gray-100'>
-        <Header />
+       <Header />
         {children}
-        <Footer />
+      <Footer />
         </body>
     </html>
   )

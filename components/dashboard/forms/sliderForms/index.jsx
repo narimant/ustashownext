@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Blog = () => {
+const SlidersAll = () => {
     return (
         <div>
-            test
+           slider all
         </div>
     );
 };
 
-export default Blog;
+export default SlidersAll;

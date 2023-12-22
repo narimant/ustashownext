@@ -1,36 +1,43 @@
-import ArticleSlider from "@/components/sliders/article-slider";
-import Image from "next/image";
-import React from "react";
-import { CiUser } from "react-icons/ci";
-import { CiCalendarDate } from "react-icons/ci";
+import { IoMdBrush } from "react-icons/io";
+import { IoResizeOutline } from "react-icons/io5";
+import { BsFiles } from "react-icons/bs";
 
-const SignePageBlog = () => {
-  return (
- <>
-    <div className="bg-white rounded-lg shadow-light p-5 border-gray-700">
-      <h1 className="text-2xl border-b border-gray-200 pb-6 ">
-        طراحی سایت با پایتون
+const SingleRightSide = () => {
+    return (
+        <div className="col-span-2">
+          {/* ----right section---- */}
+          <div className="flex flex-col gap-5">
+            <div className="grid grid-cols-3 gap-5 ">
+              <div className="flex justify-start items-center bg-white rounded-lg shadow-light p-5">
+                <IoMdBrush size={30} className="text-purple-600 m-5" />
+                <div className="*:p-1">
+                  <h4 className="text-lg font-semibold ">فرمت فایل</h4>
+                  <p className="text-sm ">PSD</p>
+                </div>
+              </div>
+              <div className="flex justify-start items-center bg-white rounded-lg shadow-light p-5">
+                <IoResizeOutline size={30} className="text-purple-600 m-5" />
+                <div className="*:p-1">
+                  <h4 className="text-lg font-semibold ">ایعاد فایل</h4>
+                  <p className="text-sm ">1920*720 px</p>
+                </div>
+              </div>
+              <div className="flex justify-start items-center bg-white rounded-lg shadow-light p-5">
+                <BsFiles size={30} className="text-purple-600 m-5" />
+                <div className="*:p-1">
+                  <h4 className="text-lg font-semibold ">حجم فایل</h4>
+                  <p className="text-sm "> 10 مگابایت</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-light p-5 border-gray-700">
+      <h1 className="text-2xl  border-gray-200 pb-6 ">
+     توضیخات
       </h1>
-      <div className="flex flex-wrap items-center gap-3 mb-6 py-4">
-        <div className="text-sm font-danaMedium text-zinc-700 dark:text-white flex justify-start items-center gap-1">
-          <CiUser size={25} />
-          <span className="font-dana font-normal">نوشته از شقایق ستیه نیا</span>
-        </div>
-        <div className="text-sm font-danaMedium text-zinc-700 dark:text-white flex justify-start items-center gap-1">
-          <CiCalendarDate size={25} />
-          <span className="font-dana font-normal leading-10">1402/09/29</span>
-        </div>
-      </div>
+      
 
-      <div>
-        <Image
-          src="/images/blog/01.jpg"
-          width={800}
-          height={500}
-          className="w-full "
-          alt="image alt"
-        />
-      </div>
+  
       <div className="leading-9 text-zinc-700 font-light font-dana text-xl">
         <p >
       
@@ -70,20 +77,13 @@ const SignePageBlog = () => {
       </div>
     </div>
 
-        <div className="bg-white rounded-lg shadow-light px-5 pb-3 border-gray-700">
-        <ArticleSlider title="مطالب مرتبط"/>
-        </div>
 
-        <div className="bg-white rounded-lg shadow-light p-5 border-gray-700 mt-5">
-            <h3 className="w-full text-xl font-medium"><span>نظرات</span></h3>
-        </div>
-       
-   
-   
-    </>
+          </div>
 
- 
-  );
+          {/* ----left section----- */}
+          <div></div>
+        </div>
+    );
 };
 
-export default SignePageBlog;
+export default SingleRightSide;
