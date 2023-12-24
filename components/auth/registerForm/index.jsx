@@ -11,7 +11,7 @@ const RegisterForm = () => {
       password: watch("password"),
       rePassword: watch("rePassword"),
     };
-    console.log(formData);
+  
   };
   const {
     register,

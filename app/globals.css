@@ -74,3 +74,9 @@ body{font-family: Vazirmatn;}
   font-weight: 800;
   src: local('dana'), url('https://fonts.cdnfonts.com/s/87601/dana extrabold.woff') format('woff');
 }
+
+@layer utilities {
+  .ltr {
+    direction: ltr;
+  }
+}
