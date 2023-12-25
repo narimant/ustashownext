@@ -7,9 +7,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const MiddleBannerAll = () => {
+const AllPosts = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [banners, setBanners] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [pageNumber, SetPageNumber] = useState(1);
   const [numbersOfBtn, setNumbersOfBtn] = useState([1]);
 
@@ -21,25 +21,25 @@ const MiddleBannerAll = () => {
     setIsLoading(true);
     axios
       .get(
-        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/middle-baners?pn=${pageNumber}`
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/posts?pn=${pageNumber}`
       )
       .then((data) => {
-        setBanners(data.data.GoalMidBans);
-        setNumbersOfBtn(data.data.AllMidBans);
+        setPosts(data.data.GolPosts);
+        setNumbersOfBtn(data.data.AllPostsNum);
 
-        const a = data.data.AllMidBans.length / 10;
+        const a = data.data.AllPostsNum.length / 10;
         setNumbersOfBtn(Array.from({ length: a }, (value, index) => index + 1));
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
   };
-  const removeBannerHandler = (id) => {
-    const params = { goalId: id };
+
+  const removePostHandler = (id) => {
+    
 
     axios
       .delete(
-        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/delete-middle-baners`,
-        { data: params }
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/delete-post/${id}`
       )
       .then((d) => {
         getFetchData(pageNumber);
@@ -58,14 +58,14 @@ const MiddleBannerAll = () => {
           <thead>
             <tr className=" border-b child:py-5">
               <th className="  ">تصویر</th>
-              <th className="  ">لینک</th>
+            
               <th className="  ">وضعیت نمایش</th>
               <th className=" "> تاریخ</th>
               <th className="  "> تنظیمات</th>
             </tr>
           </thead>
           <tbody>
-            {banners.map((item, index) => (
+            {posts.map((item, index) => (
               <tr key={index}>
                 <td className="border border-slate-300 w-1/6">
                   <Image
@@ -81,9 +81,9 @@ const MiddleBannerAll = () => {
                     className="w-auto h-auto"
                   />
                 </td>
-                <td className="border border-slate-300 ">{item.link}</td>
+          
                 <td className="border border-slate-300 text-center ">
-                  {item.situation === "true" ? (
+                  {item.published === true ? (
                     <div className="bg-green-500 text-white py-2 px-3 inline-block rounded-lg">
                       روشن
                     </div>
@@ -95,13 +95,13 @@ const MiddleBannerAll = () => {
                 <td className="border border-slate-300 ">
                   <Link
                     className="bg-blue-600 text-white py-2 px-5 rounded-lg mx-3"
-                    href={`banners/${item._id}`}
+                    href={`posts/${item._id}`}
                   >
                     edit
                   </Link>
                   <button
                     className="bg-red-600 text-white rounded-lg py-2 px-5 "
-                    onClick={() => removeBannerHandler(item._id)}
+                    onClick={() => removePostHandler(item._id)}
                   >
                     delete
                   </button>
@@ -132,4 +132,4 @@ const MiddleBannerAll = () => {
   );
 };
 
-export default MiddleBannerAll;
+export default AllPosts;

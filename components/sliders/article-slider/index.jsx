@@ -3,9 +3,15 @@ import Link from 'next/link';
 
 import SlideSection from './SlideSection';
 import { MdArrowBackIos } from "react-icons/md";
-import { IoIosArrowForward } from "react-icons/io";
-const ArticleSlider = ({title}) => {
+import Pager from '@/components/blog/pager';
 
+const getData=async()=>{
+    const result=await fetch("https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-new-post",{cache:"no-store"})
+    const data=await result.json();
+    return data;
+}
+const ArticleSlider = async({title}) => {
+const posts=await getData();
     return (
         <div className='container mx-auto my-8'>
          <div className='flex justify-between text-xl py-8'>
@@ -17,10 +23,13 @@ const ArticleSlider = ({title}) => {
          </div>
      
          <div className='grid grid-cols-4 gap-4'>
-            <SlideSection image="/images/product/01.png" title="محصول شماره 1" price={2500} category={[ "آموزش" , " ترفند" ]}/>
-            <SlideSection image="/images/product/06.jpg" title="محصول شماره 2" price={5000} category={[ "آموزش" , " ترفند" ]}/>
-            <SlideSection image="/images/product/03.png" title="محصول شماره 3" price={3000} category={[ "آموزش" , " ترفند" ]}/>
-            <SlideSection image="/images/product/04.png" title="محصول شماره 1" price={56000} category={[ "آموزش" , " ترفند" ]}/>
+            {
+                    posts.map((post,index)=>(
+                            <SlideSection key={index} data={post}/>
+                    ))
+            }
+            
+           
 
 
          </div>

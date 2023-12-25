@@ -1,10 +1,8 @@
-
 import DashboardSidebar from "@/components/dashboard/layout/sidebar";
 import "../globals.css";
 import DashboardMainSide from "@/components/dashboard/layout/mainSide";
 import MainSideHead from "@/components/dashboard/layout/mainSIdeHead";
 import { Suspense } from "react";
-
 
 export const metadata = {
   title: "Next.js",
@@ -13,34 +11,23 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fa" dir='rtl'>
-    <body className='bg-gray-100 min-h-screen w-full'>
+    <html lang="fa" dir="rtl">
+      <body className="bg-gray-100 min-h-screen w-full">
+        <div className="grid grid-cols-6  min-h-screen h-full">
+          <div className="col-span-1 bg-gray-700">
+            {/* ---right side ----*/}
+            <DashboardSidebar />
+          </div>
 
+          <div className="col-span-5">
+            {/* ---mina side---  */}
 
-       <div className="grid grid-cols-6  min-h-screen h-full">
+            <MainSideHead />
 
-
-        <div className="col-span-1 bg-gray-700">
-
-          {/* ---right side ----*/}
-        <DashboardSidebar />
+            <DashboardMainSide>{children}</DashboardMainSide>
+          </div>
         </div>
-
-        <div className="col-span-5">
-          {/* ---mina side---  */}
-          
-          <MainSideHead />
-       
-        <DashboardMainSide>{children}</DashboardMainSide>
-        </div>
-
-       </div>
-       
-      
-        </body>
-</html>
-
-
-    
+      </body>
+    </html>
   );
 }
