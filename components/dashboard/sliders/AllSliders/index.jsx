@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const AllPosts = () => {
+const AllSliders = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const [pageNumber, SetPageNumber] = useState(1);
@@ -22,13 +22,14 @@ const AllPosts = () => {
     setIsLoading(true);
     axios
       .get(
-        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/posts?pn=${pageNumber}`
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/sliders?pn=${pageNumber}`
       )
       .then((data) => {
-        setPosts(data.data.GolPosts);
-        setNumbersOfBtn(data.data.AllPostsNum);
+        console.log(data);
+        setPosts(data.data.GoalSliders);
+        setNumbersOfBtn(data.data.AllSliders);
 
-        const a = data.data.AllPostsNum.length / 10;
+        const a = Math.ceil(data.data.AllSliders.length / 10);
         setNumbersOfBtn(Array.from({ length: a }, (value, index) => index + 1));
         setIsLoading(false);
       })
@@ -38,12 +39,15 @@ const AllPosts = () => {
   const removePostHandler = (id) => {
     
 
+    const params = { goalId: id };
+
     axios
       .delete(
-        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/delete-post/${id}`
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/delete-slider`,
+        { data: params }
       )
       .then((d) => {
-        toast.success("پست مورد نظر با موفقیت حذف شد", {
+        toast.success("اسلایدر مورد نظر با موفقیت حذف شد", {
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -104,7 +108,7 @@ const AllPosts = () => {
                 <td className="border border-slate-300 ">
                   <Link
                     className="bg-blue-600 text-white py-2 px-5 rounded-lg mx-3"
-                    href={`posts/${item._id}`}
+                    href={`sliders/${item._id}`}
                   >
                     edit
                   </Link>
@@ -141,4 +145,4 @@ const AllPosts = () => {
   );
 };
 
-export default AllPosts;
+export default AllSliders;

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import React from "react";
+import { TfiLayoutSliderAlt } from "react-icons/tfi";
 import { IoHomeOutline } from "react-icons/io5";
 import { PiFlagBanner } from "react-icons/pi";
 import { SlNote } from "react-icons/sl";
@@ -37,7 +37,15 @@ const DashboardSidebar = () => {
           <span> بنرهای تبلیعاتی </span>
         </Link>
 
-
+        <Link
+          href="/dashboard/sliders"
+          className={`flex justify-start items-center gap-4 text-lg px-5 rounded-lg ${
+            router.startsWith("/dashboard/sliders") && "bg-purple-600"
+          } `}
+        >
+         <TfiLayoutSliderAlt />
+          <span> اسلایدر</span>
+        </Link>
         <Link
           href="/dashboard/posts"
           className={`flex justify-start items-center gap-4 text-lg px-5 rounded-lg ${

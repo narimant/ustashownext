@@ -5,9 +5,7 @@ import React, { Suspense } from 'react';
 const BannerLayout = ({children}) => {
     return (
         <div>
-            <div>
-                <SliderMenu />
-            </div>
+            <div><SliderMenu /></div>
             <div>
                
                 {children}

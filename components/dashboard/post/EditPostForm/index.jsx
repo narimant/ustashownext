@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import InputElement from "../InputElement/InputElement";
+import { toast } from "react-toastify";
 
 const EditPostForm = ({ data }) => {
   const tagsRef = useRef();
@@ -62,6 +63,14 @@ const EditPostForm = ({ data }) => {
         formData
       )
       .then((data) => {
+        toast.success("پست مورد نظر با موفقیت بروزرسانی شد", {
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+       });
         router.push("/dashboard/posts");
   
       })

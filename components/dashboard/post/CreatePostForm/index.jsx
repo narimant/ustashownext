@@ -4,25 +4,25 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import InputElement from "../InputElement/InputElement";
-
+import "react-toastify/dist/ReactToastify.css"; 
+import { Toast, ToastContainer, toast } from "react-toastify";
 const CreatePostForm = () => {
-  const tagsRef=useRef();
-  const [relatedPost,setRelatedPost]=useState([])
+  const tagsRef = useRef();
+  const [relatedPost, setRelatedPost] = useState([]);
   const router = useRouter();
-  const [title,setTitle] = useState("");
+  const [title, setTitle] = useState("");
 
-  const [slug,setSlug] = useState("");
-  const [image,setImage] = useState("");
-  const [imageAlt,setImageAlt] = useState("");
-  const [shortDesc,setShortDesc] = useState("");
-  const [body,setBody] = useState("");
+  const [slug, setSlug] = useState("");
+  const [image, setImage] = useState("");
+  const [imageAlt, setImageAlt] = useState("");
+  const [shortDesc, setShortDesc] = useState("");
+  const [body, setBody] = useState("");
   // const seoTitleRef=useState();
   // const seoDescriptionRef=useState();
   const [tag, setTag] = useState([]);
-  const [published,setPublished] = useState(false);
+  const [published, setPublished] = useState(false);
 
   // TAG MANAGING
-
 
   const tagSuber = (e) => {
     if (e.key === "Enter") {
@@ -43,8 +43,6 @@ const CreatePostForm = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
- 
-
     const formData = {
       title: title,
       slug: slug,
@@ -52,10 +50,10 @@ const CreatePostForm = () => {
       imageAlt: imageAlt,
       shortDesc: shortDesc,
       body: body,
-      relatedPosts:relatedPost,
+      relatedPosts: relatedPost,
       type: "post",
       pageView: 0,
-      tags:tag,
+      tags: tag,
       published: published,
     };
 
@@ -65,6 +63,14 @@ const CreatePostForm = () => {
         formData
       )
       .then((data) => {
+        toast.success("پست مورد نظر با موفقیت ایجاد شد", {
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+       });
         router.push("/dashboard/posts");
       })
       .catch((error) => console.log("error"));
@@ -78,31 +84,34 @@ const CreatePostForm = () => {
       .get(postUrl)
       .then((data) => {
         setPosts(data.data);
+      
       })
       .catch((error) => console.log(error));
   }, []);
-const postRelatedHandler=(e)=>{
-  
+  const postRelatedHandler = (e) => {
+    if (e.target.checked) {
+      setRelatedPost((preValue) => [...preValue, e.target.value]);
+    } else {
+      const copyRelatePost = [...relatedPost];
+      const newRelPost = copyRelatePost.filter(
+        (item) => item !== e.target.value
+      );
 
- if(e.target.checked){
-  setRelatedPost(preValue=>[...preValue,e.target.value])
- }else{
-  const copyRelatePost=[...relatedPost];
-  const newRelPost=copyRelatePost.filter(item=>item!==e.target.value);
-
-  setRelatedPost(newRelPost);
- }
-
-}
-
+      setRelatedPost(newRelPost);
+    }
+  };
 
   return (
     <div className="rounded-lg p-5 bg-white shadow-light">
       <h2> یجاد پست جدید</h2>
       <form onSubmit={(e) => submitHandler(e)}>
         <div className="py-5 child:py-5 mb-5">
-          <InputElement label="عنوان" id="title"  state={title}
-            setState={setTitle} />
+          <InputElement
+            label="عنوان"
+            id="title"
+            state={title}
+            setState={setTitle}
+          />
           <InputElement
             label="اسلاگ پست"
             id="slug"
@@ -146,7 +155,7 @@ const postRelatedHandler=(e)=>{
               id="published"
               className="bg-gray-100 rounded-lg w-full outline-none py-3 px-3"
               value={published}
-              onChange={(e)=> setPublished(e.target.value)}
+              onChange={(e) => setPublished(e.target.value)}
             >
               <option value={true}>انتشار</option>
               <option value={false}>پیش نویس</option>
@@ -204,9 +213,19 @@ const postRelatedHandler=(e)=>{
           <div className="w-full h-auto ">
             <h4 className="py-5">انتخاب پست های مرتبط</h4>
             <div className="overflow-y-scroll min-h-52 h-full bg-gray-50 border border-gray-200 rounded-lg p-5">
-              {posts.length>0 && posts.map((relatedPost, index) => (
-                <div className="flex gap-2 py-2" key={index}><span><input type="checkbox" onChange={postRelatedHandler} value={relatedPost._id}/></span><p>{relatedPost.title}</p></div>
-              ))}
+              {posts.length > 0 &&
+                posts.map((relatedPost, index) => (
+                  <div className="flex gap-2 py-2" key={index}>
+                    <span>
+                      <input
+                        type="checkbox"
+                        onChange={postRelatedHandler}
+                        value={relatedPost._id}
+                      />
+                    </span>
+                    <p>{relatedPost.title}</p>
+                  </div>
+                ))}
             </div>
           </div>
         </div>
@@ -215,6 +234,8 @@ const postRelatedHandler=(e)=>{
           ذخیره
         </button>
       </form>
+
+    
     </div>
   );
 };

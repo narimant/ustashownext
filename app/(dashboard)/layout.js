@@ -3,6 +3,7 @@ import "../globals.css";
 import DashboardMainSide from "@/components/dashboard/layout/mainSide";
 import MainSideHead from "@/components/dashboard/layout/mainSIdeHead";
 import { Suspense } from "react";
+import Tostify from "@/components/tostify";
 
 export const metadata = {
   title: "Next.js",
@@ -26,7 +27,9 @@ export default function RootLayout({ children }) {
 
             <DashboardMainSide>{children}</DashboardMainSide>
           </div>
+       
         </div>
+        <Tostify />
       </body>
     </html>
   );

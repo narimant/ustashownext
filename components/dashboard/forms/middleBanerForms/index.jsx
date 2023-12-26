@@ -27,7 +27,7 @@ const MiddleBannerAll = () => {
         setBanners(data.data.GoalMidBans);
         setNumbersOfBtn(data.data.AllMidBans);
 
-        const a = data.data.AllMidBans.length / 10;
+        const a = Math.ceil(data.data.AllMidBans.length / 10);
         setNumbersOfBtn(Array.from({ length: a }, (value, index) => index + 1));
         setIsLoading(false);
       })
