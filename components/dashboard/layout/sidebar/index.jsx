@@ -6,7 +6,12 @@ import { TfiLayoutSliderAlt } from "react-icons/tfi";
 import { IoHomeOutline } from "react-icons/io5";
 import { PiFlagBanner } from "react-icons/pi";
 import { SlNote } from "react-icons/sl";
+import { MdProductionQuantityLimits } from "react-icons/md";
+
+
 const DashboardSidebar = () => {
+
+
   const router = usePathname();
 
   return (
@@ -65,6 +70,19 @@ const DashboardSidebar = () => {
           <TbCategoryMinus />
           <span>  دسته بندی ها</span>
         </Link>
+
+
+        <Link
+          href="/dashboard/products"
+          className={`flex justify-start items-center gap-4 text-lg px-5 rounded-lg ${
+            router.startsWith("/dashboard/products") && "bg-purple-600"
+          } `}
+        >
+          <MdProductionQuantityLimits />
+          <span>    محصولات</span>
+        </Link>
+
+
       </div>
     </div>
   );
