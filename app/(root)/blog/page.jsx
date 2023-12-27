@@ -13,7 +13,7 @@ const getData = async ({ searchParams: { page } }) => {
 };
 
 const Blog = async (props) => {
-
+const searchParams=props.searchParams;
   const posts = await getData(props);
   return (
     <div className="container mx-auto">
@@ -32,7 +32,7 @@ const Blog = async (props) => {
 
     </div>
       <div>
-        <Pager data={posts.AllPostsNum}/>
+        <Pager data={posts.AllPostsNum} searchParams={searchParams}/>
       </div>
     </div>
   );

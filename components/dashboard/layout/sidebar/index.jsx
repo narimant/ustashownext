@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
+import { TbCategoryMinus } from "react-icons/tb";
 import { TfiLayoutSliderAlt } from "react-icons/tfi";
 import { IoHomeOutline } from "react-icons/io5";
 import { PiFlagBanner } from "react-icons/pi";
@@ -10,7 +10,7 @@ const DashboardSidebar = () => {
   const router = usePathname();
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col sticky top-0 right-0 bottom-0">
       <h1 className="text-2xl font-bold text-center text-white h-14 border-b border-gray-600 leading-[56px]">
         <Link href="/">
           <span className="text-purple-600">Us</span>tashow
@@ -54,6 +54,16 @@ const DashboardSidebar = () => {
         >
           <SlNote />
           <span> پست ها</span>
+        </Link>
+
+        <Link
+          href="/dashboard/category"
+          className={`flex justify-start items-center gap-4 text-lg px-5 rounded-lg ${
+            router.startsWith("/dashboard/category") && "bg-purple-600"
+          } `}
+        >
+          <TbCategoryMinus />
+          <span>  دسته بندی ها</span>
         </Link>
       </div>
     </div>

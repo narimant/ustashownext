@@ -1,17 +1,22 @@
 import React from 'react';
 import Box from './Box';
-
-const GraphicCat = () => {
+const getData=async()=>{
+    const result=await fetch('https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-active-category');
+    const data=await  result.json();
+    return data;
+}
+const GraphicCat =async () => {
+    const data=await getData();
+    console.log(data);
     return (
         <div className='container mx-auto grid grid-cols-4 gap-8'>
-            <Box title="فایل لایه باز فتوشاپ" paragraf="وکتورهای گرافیکی فدرتمند" imageUrl="/images/graphic-cat/calculator-min.png"/>
-            <Box title="فایل لایه باز فتوشاپ" paragraf="وکتورهای گرافیکی فدرتمند" imageUrl="/images/graphic-cat/calculator-min.png"/>
-            <Box title="فایل لایه باز فتوشاپ" paragraf="وکتورهای گرافیکی فدرتمند" imageUrl="/images/graphic-cat/calculator-min.png"/>
-            <Box title="فایل لایه باز فتوشاپ" paragraf="وکتورهای گرافیکی فدرتمند" imageUrl="/images/graphic-cat/calculator-min.png"/>
-            <Box title="فایل لایه باز فتوشاپ" paragraf="وکتورهای گرافیکی فدرتمند" imageUrl="/images/graphic-cat/calculator-min.png"/>
-            <Box title="فایل لایه باز فتوشاپ" paragraf="وکتورهای گرافیکی فدرتمند" imageUrl="/images/graphic-cat/calculator-min.png"/>
-            <Box title="فایل لایه باز فتوشاپ" paragraf="وکتورهای گرافیکی فدرتمند" imageUrl="/images/graphic-cat/calculator-min.png"/>
-            <Box title="فایل لایه باز فتوشاپ" paragraf="وکتورهای گرافیکی فدرتمند" imageUrl="/images/graphic-cat/calculator-min.png"/>
+            {
+                data.map((item,index)=>(
+                    <Box key={index} title={item.title} paragraf={item.shortDesc} linkHref={item.slug} imageUrl={item.image}/>
+                ))
+            }
+          
+
         </div>
     );
 };

@@ -13,11 +13,13 @@ import RelatedPost from "@/components/blog/singlePage/RelatedPost";
 
 const getData=async ({params: { slug }})=>{
 
-  const result=await fetch(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-post/${slug}`)
+  const result=await fetch(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-post/${slug}`,{"cache":"no-store"})
   const data=await result.json();
+  console.log(data);
   return data;
 }
 const SignePageBlog =async (props) => {
+
   const {title,slug,image,imageAlt,shortDesc,body,tags,relatedPosts,comments,pageView,date,updatedAt}=await getData(props);
 
   return (
@@ -48,6 +50,7 @@ const SignePageBlog =async (props) => {
             </div>
 
             <div>
+              
               <Image
                 src={image}
                 width={800}

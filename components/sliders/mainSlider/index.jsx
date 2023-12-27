@@ -11,9 +11,17 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Link from "next/link";
 SwiperCore.use([Autoplay]);
 
 const MainSlider = () => {
+   const [slider,setSlider]=useState([]);
+
+   useEffect(()=>{
+      axios.get('https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-active-slider').then(data=>{setSlider(data.data)}).catch(error=>console.log(error));
+   },[])
    return (
       <main>
          <section className=" container mx-auto ">
@@ -27,21 +35,24 @@ const MainSlider = () => {
                scrollbar={{ draggable: true }}
             
             >
-               <SwiperSlide>
+             {
+               slider[0]==-1?(<p className="text-center">loading...</p>) :
+               slider.map((item,index)=>(
+               
+                  <SwiperSlide key={index}>
+                        <Link href={item.link}>
                   <div className=" rounded-md flex justify-center items-center overflow-hidden ">
-                    <Image src="/images/slider/slide1.jpg" width={1920} height={300}   alt="image slider 1"/>
+                    <Image src={item.image} width={1920} height={300}   alt={item.imageAlt}/>
                   </div>
+                  </Link>
                </SwiperSlide>
-               <SwiperSlide>
-                  <div className="  rounded-md flex justify-center items-center overflow-hidden">
-                  <Image src="/images/slider/slide2.jpg"  width={1920} height={300} alt="image slider 2"/>
-                  </div>
-               </SwiperSlide>
-               <SwiperSlide>
-                  <div className="  rounded-md flex justify-center items-center overflow-hidden">
-                  <Image src="/images/slider/slide3.jpg" width={1920} height={300}   alt="image slider 3"/>
-                  </div>
-               </SwiperSlide>
+              
+               ))
+             }
+                
+            
+              
+               
 
             </Swiper>
          </section>

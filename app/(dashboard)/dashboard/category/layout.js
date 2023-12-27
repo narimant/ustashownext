@@ -1,14 +1,12 @@
 
+import CategoryMenu from '@/components/dashboard/category/CategoryMenu';
 
-import PostMenu from '@/components/dashboard/post/PostMenu';
-import React, { Suspense } from 'react';
+
 
 const BannerLayout = ({children}) => {
     return (
         <div>
-            <div>
-                <PostMenu />
-            </div>
+            <div><CategoryMenu /></div>
             <div>
                
                 {children}

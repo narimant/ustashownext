@@ -8,9 +8,9 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const AllPosts = () => {
+const AllCategory = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [posts, setPosts] = useState([]);
+  const [category, setCategory] = useState([]);
   const [pageNumber, SetPageNumber] = useState(1);
   const [numbersOfBtn, setNumbersOfBtn] = useState([1]);
 
@@ -22,28 +22,32 @@ const AllPosts = () => {
     setIsLoading(true);
     axios
       .get(
-        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/posts?pn=${pageNumber}`
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-all-category?pn=${pageNumber}`
       )
       .then((data) => {
-        setPosts(data.data.GolPosts);
-        setNumbersOfBtn(data.data.AllPostsNum);
+        console.log(data);
+        setCategory(data.data.GoalCategories);
+        setNumbersOfBtn(data.data.AllCategories);
 
-        const a = Math.ceil(data.data.AllPostsNum.length / 10);
+        const a = Math.ceil(data.data.AllCategories.length / 10);
         setNumbersOfBtn(Array.from({ length: a }, (value, index) => index + 1));
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
   };
 
-  const removePostHandler = (id) => {
+  const removeCategoryHandler = (id) => {
     
+
+    const params = { goalId: id };
 
     axios
       .delete(
-        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/delete-post/${id}`
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/delete-category`,
+        { data: params }
       )
       .then((d) => {
-        toast.success("پست مورد نظر با موفقیت حذف شد", {
+        toast.success("اسلایدر مورد نظر با موفقیت حذف شد", {
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -74,7 +78,7 @@ const AllPosts = () => {
             </tr>
           </thead>
           <tbody>
-            {posts.map((item, index) => (
+            {category.map((item, index) => (
               <tr key={index}>
                 <td className="border border-slate-300 w-1/6">
                   <Image
@@ -92,7 +96,7 @@ const AllPosts = () => {
                 </td>
           
                 <td className="border border-slate-300 text-center ">
-                  {item.published === true ? (
+                  {item.situation == true ? (
                     <div className="bg-green-500 text-white py-2 px-3 inline-block rounded-lg">
                       روشن
                     </div>
@@ -104,13 +108,13 @@ const AllPosts = () => {
                 <td className="border border-slate-300 ">
                   <Link
                     className="bg-blue-600 text-white py-2 px-5 rounded-lg mx-3"
-                    href={`posts/${item._id}`}
+                    href={`category/${item._id}`}
                   >
                     edit
                   </Link>
                   <button
                     className="bg-red-600 text-white rounded-lg py-2 px-5 "
-                    onClick={() => removePostHandler(item._id)}
+                    onClick={() => removeCategoryHandler(item._id)}
                   >
                     delete
                   </button>
@@ -141,4 +145,4 @@ const AllPosts = () => {
   );
 };
 
-export default AllPosts;
+export default AllCategory;

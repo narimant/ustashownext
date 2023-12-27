@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-const Pager = async ({ data }) => {
+const Pager = async ({ data ,searchParams} ) => {
+
   const PostLength = data.length;
   const a = Math.ceil(PostLength / 10);
 
@@ -12,7 +13,7 @@ const Pager = async ({ data }) => {
         <Link
           href={`?page=${item}`}
           key={index}
-          className="py-1 px-3 rounded-full bg-blue-600 text-white m-2"
+          className={`py-1 px-3 rounded-full bg-blue-600 text-white m-2 ${searchParams.page==item ? 'bg-gray-600': 'bg-blue-600'}`}
         >
           {item}
         </Link>

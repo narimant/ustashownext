@@ -30,7 +30,7 @@ const CreatePostForm = () => {
       let tagList = [...tag];
       const data = tagsRef.current.value;
       if (data.length > 0) {
-        tagList = [...tag, data];
+        tagList = [...tag, data.replace(/\s+/g, "_").toLowerCase()];
         setTag(tagList);
       }
       tagsRef.current.value = "";

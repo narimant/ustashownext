@@ -96,7 +96,7 @@ const AllSliders = () => {
                 </td>
           
                 <td className="border border-slate-300 text-center ">
-                  {item.published === true ? (
+                  {item.situation == true ? (
                     <div className="bg-green-500 text-white py-2 px-3 inline-block rounded-lg">
                       روشن
                     </div>

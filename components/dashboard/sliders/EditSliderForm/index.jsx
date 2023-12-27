@@ -30,6 +30,7 @@ const URL="https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-slider";
       situation,
       link
     }
+
     axios.patch(URL,fromData).then(d=>{
       router.push('/dashboard/sliders');
    
@@ -86,7 +87,7 @@ const URL="https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-slider";
                 وضعیت نمایش
               </label>
               
-              <select     onChange={(e)=>setSituation(e.target.value)} className="bg-gray-100 rounded-lg w-full outline-none py-3 px-3 " defaultValue={situation} >
+              <select     onChange={(e)=>setSituation(JSON.parse(e.target.value))} className="bg-gray-100 rounded-lg w-full outline-none py-3 px-3 " value={situation.toString()} >
                 <option value={true} >روشن</option>
                 <option value={false}>خاموش</option>
               </select>

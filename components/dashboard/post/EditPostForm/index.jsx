@@ -31,7 +31,7 @@ const EditPostForm = ({ data }) => {
       let tagList = [...tag];
       const data = tagsRef.current.value;
       if (data.length > 0) {
-        tagList = [...tag, data];
+        tagList = [...tag, data.replace(/\s+/g, "_").toLowerCase()];
         setTag(tagList);
       }
       tagsRef.current.value = "";
@@ -155,7 +155,7 @@ const EditPostForm = ({ data }) => {
             <select
               id="published"
               className="bg-gray-100 rounded-lg w-full outline-none py-3 px-3"
-              value={published}
+              value={published.toString()}
               onChange={(e) => setPublished(e.target.value)}
             >
               <option value={true}>انتشار</option>
