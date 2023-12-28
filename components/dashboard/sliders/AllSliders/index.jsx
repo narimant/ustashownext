@@ -25,7 +25,7 @@ const AllSliders = () => {
         `https://distracted-mcnulty-orq2ubkyw.liara.run/api/sliders?pn=${pageNumber}`
       )
       .then((data) => {
-        console.log(data);
+       
         setPosts(data.data.GoalSliders);
         setNumbersOfBtn(data.data.AllSliders);
 

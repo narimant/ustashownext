@@ -17,10 +17,10 @@ const GraphicSlider = ({title}) => {
          </div>
      
          <div className='grid grid-cols-4 gap-4'>
-            <SlideSection image="/images/product/05.jpg" title="محصول شماره 1" price={2500} category={[ "آموزش" , " ترفند" ]}/>
-            <SlideSection image="/images/product/09.png" title="محصول شماره 2" price={5000} category={[ "آموزش" , " ترفند" ]}/>
-            <SlideSection image="/images/product/07.png" title="محصول شماره 3" price={3000} category={[ "آموزش" , " ترفند" ]}/>
-            <SlideSection image="/images/product/08.jpg" title="محصول شماره 1" price={56000} category={[ "آموزش" , " ترفند" ]}/>
+            <SlideSection image="/images/product/05.jpg" title="محصول شماره 1" price={2500} />
+            <SlideSection image="/images/product/09.png" title="محصول شماره 2" price={5000} />
+            <SlideSection image="/images/product/07.png" title="محصول شماره 3" price={3000} />
+            <SlideSection image="/images/product/08.jpg" title="محصول شماره 1" price={56000} />
 
 
          </div>

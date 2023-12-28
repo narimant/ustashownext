@@ -104,7 +104,7 @@ const CreateProductForm = () => {
           draggable: true,
           progress: undefined,
         });
-        router.push("/dashboard/posts");
+        router.push("/dashboard/products");
       })
       .catch((error) => console.log(error));
   };
@@ -135,7 +135,7 @@ const CreateProductForm = () => {
     if (e.target.checked) {
       setRelatedProduct((preValue) => [...preValue, e.target.value]);
     } else {
-      const copyRelatePost = [...relatedPost];
+      const copyRelatePost = [...relatedProduct];
       const newRelPost = copyRelatePost.filter(
         (item) => item !== e.target.value
       );

@@ -15,7 +15,7 @@ const getData=async ({params: { slug }})=>{
 
   const result=await fetch(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-post/${slug}`,{"cache":"no-store"})
   const data=await result.json();
-  console.log(data);
+
   return data;
 }
 const SignePageBlog =async (props) => {
@@ -25,7 +25,7 @@ const SignePageBlog =async (props) => {
   return (
     <div className="container mx-auto">
       <div className="w-full">
-        <BreadCrumb />
+        <BreadCrumb refLink="blog" title={title}/>
       </div>
       <div className="container grid grid-cols-3 gap-5">
         {/* -------------main side----------- */}
@@ -70,7 +70,7 @@ const SignePageBlog =async (props) => {
           </div>
 
           <div className="bg-white rounded-lg shadow-light px-5 pb-3 border-gray-700">
-           <RelatedPost relatedPostData={relatedPosts}/>
+           <RelatedPost relatedPostData={relatedPosts} model="post"/>
           </div>
 
           <Comment />

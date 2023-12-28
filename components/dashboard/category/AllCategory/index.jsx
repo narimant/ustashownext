@@ -25,7 +25,7 @@ const AllCategory = () => {
         `https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-all-category?pn=${pageNumber}`
       )
       .then((data) => {
-        console.log(data);
+       
         setCategory(data.data.GoalCategories);
         setNumbersOfBtn(data.data.AllCategories);
 

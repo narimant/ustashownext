@@ -7,7 +7,7 @@ const getData=async()=>{
 }
 const GraphicCat =async () => {
     const data=await getData();
-    console.log(data);
+   
     return (
         <div className='container mx-auto grid grid-cols-4 gap-8'>
             {

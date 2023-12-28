@@ -21,7 +21,7 @@ const CreateSliderForm = () => {
             sorter:imageSorterRef.current.value,
             link: imageLinkRef.current.value,
         }
-        console.log(formData);
+  
        
         axios.post(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/new-slider`,formData).then(data=>{router.push('/dashboard/sliders')}).catch(error=>console.log(error))
     }

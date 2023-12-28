@@ -3,7 +3,7 @@ import Link from "next/link";
 
 
 const BlogPostBox = ({post:{title,slug,image,imageAlt,shortDesc,pageView,updatedAt}}) => {
-    console.log(title);
+  
     return (
         <div className="w-full bg-white shadow-light rounded-lg overflow-hidden flex flex-col justify-between">
            <Link href={`blog/${slug}`}> <Image  src={image} width={500} height={400} alt={imageAlt}/></Link>

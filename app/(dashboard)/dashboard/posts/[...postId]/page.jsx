@@ -10,7 +10,7 @@ const getData=async (id)=>{
 const EditPost = async({params: { postId }}) => {
    
     const data=await getData(postId);
-    console.log(data);
+  
     return (
         <EditPostForm  data={data}/>
     );

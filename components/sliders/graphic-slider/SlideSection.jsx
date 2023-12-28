@@ -43,17 +43,7 @@ const SlideSection = ({ title, price, image, category }) => {
             <p>10 مگ</p>
           </div>
         </div>
-        <div className="p-2">
-          {category?.map((item, index) => (
-            <Link
-              href="#"
-              key={index}
-              className="bg-purple-100 text-purple-600 m-1 py-1 px-2 text-xs rounded-md transition-all duration-500 ease-in-out hover:bg-purple-600 hover:text-purple-200"
-            >
-              {item}
-            </Link>
-          ))}
-        </div>
+      
         <div className="flex justify-between items-center p-3">
           <div className="flex justify-start gap-4">
             <button>

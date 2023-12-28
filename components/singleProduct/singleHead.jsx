@@ -1,6 +1,6 @@
 import { SlBasket } from "react-icons/sl";
 import Image from "next/image";
-const SingleHead = () => {
+const SingleHead = ({data}) => {
     return (
         <div className="container w-full">
         {/* -------------head section----------- */}
@@ -8,13 +8,10 @@ const SingleHead = () => {
           <div className="flex flex-col justify-between">
             <div>
               <h1 className="text-4xl font-bold  pb-6 ">
-                پیاده سازی داشبورد های حرفه ای با CSS و JS
+             {data.title}
               </h1>
               <p className="text-lg font-light leading-10">
-                این دوره فرصتی فوق‌العاده برای ارتقاء مهارت‌های فرانت اند شماست.
-                با یادگیری از جدیدترین تکنیک‌ها، انیمیشن‌ها ، ابزارهای پیشرفته و
-                کتابخونه ها، به دنیای داشبوردهای شگفت‌آور با HTML، CSS و
-                JavaScript
+             {data.shortDesc}
               </p>
             </div>
             <div className="flex justify-between items-center">
@@ -22,15 +19,15 @@ const SingleHead = () => {
                 <SlBasket className="" />
                 خرید این محصول
               </button>
-              <span className="font-dana text-lg">46,000 هزار تومان</span>
+              <span className="font-dana text-lg">{data.price} هزار تومان</span>
             </div>
           </div>
           <div>
             <Image
-              src="/images/product/01.png"
+              src={data.image}
               width={600}
               height={400}
-              alt="product image"
+              alt={data.imageAlt}
               className="w-full rounded-lg overflow-hidden "
             />
           </div>
