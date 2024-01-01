@@ -43,12 +43,15 @@ const RelatedPost = ({ relatedPostData, model }) => {
 
       {model === "post" ? (
 
-        <div className="grid grid-cols-4 gap-4">
-          {posts.map((post, index) => (
+        <div className="grid grid-cols-3 gap-4">
+
+          {posts.map((post, index) => {if(index<3) return (
+           
             <div
               key={index}
               className="w-full min-h-52 shadow-light rounded-lg overflow-hidden"
             >
+             
               <Link href={`/blog/${post.slug}`}>
         
                 <Image
@@ -88,8 +91,9 @@ const RelatedPost = ({ relatedPostData, model }) => {
                   {post.pageView}
                 </div>
               </div>
+             
             </div>
-          ))}
+          )})}
         </div>
       ) : (
         <div className="grid grid-cols-4 gap-4">

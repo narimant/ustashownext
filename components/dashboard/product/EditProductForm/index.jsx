@@ -36,8 +36,12 @@ const EditProductForm = ({ data }) => {
       let tagList = [...tag];
       const data = tagsRef.current.value;
       if (data.length > 0) {
-        tagList = [...tag, data.replace(/\s+/g, "_").toLowerCase()];
-        setTag(tagList);
+       const find= tagList.find(element=>element===data)
+       if(!find) {
+          tagList = [...tag, data.replace(/\s+/g, "_").toLowerCase()];
+          setTag(tagList);
+        }
+       
       }
       tagsRef.current.value = "";
     }

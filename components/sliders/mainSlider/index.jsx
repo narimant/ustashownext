@@ -20,7 +20,10 @@ const MainSlider = () => {
    const [slider,setSlider]=useState([]);
 
    useEffect(()=>{
-      axios.get('https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-active-slider').then(data=>{setSlider(data.data)}).catch(error=>console.log(error));
+      axios.get('https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-active-slider').then(data=>{
+         console.log(data);
+         setSlider(data.data)}
+         ).catch(error=>console.log(error));
    },[])
    return (
       <main>

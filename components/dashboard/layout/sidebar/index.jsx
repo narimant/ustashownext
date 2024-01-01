@@ -7,7 +7,7 @@ import { IoHomeOutline } from "react-icons/io5";
 import { PiFlagBanner } from "react-icons/pi";
 import { SlNote } from "react-icons/sl";
 import { MdProductionQuantityLimits } from "react-icons/md";
-
+import { IoSettingsOutline } from "react-icons/io5";
 
 const DashboardSidebar = () => {
 
@@ -81,8 +81,16 @@ const DashboardSidebar = () => {
           <MdProductionQuantityLimits />
           <span>    محصولات</span>
         </Link>
-
-
+        
+        <Link
+          href="/dashboard/setting"
+          className={`flex justify-start items-center gap-4 text-lg px-5 rounded-lg ${
+            router.startsWith("/dashboard/setting") && "bg-purple-600"
+          } `}
+        >
+          <IoSettingsOutline />
+          <span>    تنظیمات</span>
+        </Link>
       </div>
     </div>
   );

@@ -16,8 +16,12 @@ const posts=await getData();
         <div className='container mx-auto my-8'>
          <div className='flex justify-between text-xl py-8'>
             <h1 className='font-semibold'>{title}</h1>
-            <Link href="#" className='flex justify-between items-center gap-4 hover:text-purple-600 text-base'>
-                <span>برو به وبلاگ</span>
+            <Link href="/blog" className='flex justify-between items-center gap-4 hover:text-purple-600 text-base'>
+              <span>
+            
+                برو به وبلاگ
+              
+                </span>
                 <MdArrowBackIos />
             </Link>
          </div>

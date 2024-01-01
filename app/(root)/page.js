@@ -7,7 +7,7 @@ import GraphicSlider from "@/components/sliders/graphic-slider";
 import ArticleSlider from "@/components/sliders/article-slider";
 
 const getData=async ()=>{
-  const result=await fetch('http://localhost:27017/api/get-home-products',{'cache':'no-store'});
+  const result=await fetch('https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-home-products',{'cache':'no-store'});
   const data= await result.json();
   return data;
 }

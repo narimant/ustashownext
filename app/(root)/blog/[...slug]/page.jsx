@@ -9,6 +9,7 @@ import Sidebar from "@/components/blog/singlePage/Sidebar";
 import Comment from "@/components/blog/singlePage/Comment";
 import { data } from "autoprefixer";
 import RelatedPost from "@/components/blog/singlePage/RelatedPost";
+import Link from "next/link";
 
 
 const getData=async ({params: { slug }})=>{
@@ -66,6 +67,9 @@ const SignePageBlog =async (props) => {
                {body}
               
               </p>
+              <div>
+                {tags.map((item,index)=>(<span key={index} className="text-sm text-blue-600 hover:text-purple-600 mx-1"><Link href="#"># {item}</Link></span>))}
+              </div>
             </div>
           </div>
 

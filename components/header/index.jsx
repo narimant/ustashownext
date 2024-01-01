@@ -1,12 +1,30 @@
+"use client"
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../public/images/logo.jpg";
 import Link from "next/link";
 import { IoIosSearch } from "react-icons/io";
 import { SlBasket } from "react-icons/sl";
 import { IoMoonOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 const Header = () => {
+  const [searchInput,setSearchInput]=useState('');
+  const router=useRouter();
+  const searchHandler=(e)=>{
+     const url=`/shop?keyword=${searchInput}`;
+     setSearchInput('')
+     router.push(url);
+  }
+  const searchInputHandler=(e)=>{
+   
+    if(e.key === "Enter")
+    {
+      const url=`/shop?keyword=${searchInput}`;
+      setSearchInput('')
+      router.push(url);
+    }
+  }
   return (
     <div className="w-full shadow-light border-b border-gray-200 bg-white ">
       <div className="container flex justify-between mx-auto py-4">
@@ -23,7 +41,7 @@ const Header = () => {
                 <Link href="#" className="hover:text-purple-600"> بازی کامپیوتری</Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-purple-600"> طرح گرافیکی</Link>
+                <Link href="/shop" className="hover:text-purple-600"> فروشگاه </Link>
               </li>
               <li>
                 <Link href="/blog" className="hover:text-purple-600"> وبلاگ</Link>
@@ -36,9 +54,13 @@ const Header = () => {
             <input
               type="text"
               className="bg-gray-100 w-48 rounded-2xl py-4 px-4 outline-none transition-all duration-200 ease-in-out focus:w-72  text-gray-700"
-              placeholder="جست و جو"
+              placeholder=" جست و جو محصولات "
+              value={searchInput}
+              onChange={(e)=>setSearchInput(e.target.value)}
+              onKeyDown={searchInputHandler}
+              
             />
-            <button>
+            <button type="submit" onClick={searchHandler}>
               <IoIosSearch className="absolute top-4 left-4 w-6 h-6" />
             </button>
           </div>
