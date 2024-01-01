@@ -12,6 +12,22 @@ const ShopSide = ({ url }) => {
   const [type, setType] = useState("");
   const [categories, setCategories] = useState([-1]);
   const [selectCat, setSelectCat] = useState([]);
+  const [searchInput,setSearchInput]=useState('');
+  const router = useRouter();
+  const searchHandler=(e)=>{
+     const url=`/shop?keyword=${searchInput}`;
+     setSearchInput('')
+     router.push(url);
+  }
+  const searchInputHandler=(e)=>{
+   
+    if(e.key === "Enter")
+    {
+      const url=`/shop?keyword=${searchInput}`;
+      setSearchInput('')
+      router.push(url);
+    }
+  }
   useEffect(() => {
     if (url) {
       setOrder(url.orderBy);
@@ -27,7 +43,7 @@ const ShopSide = ({ url }) => {
       .then((data) => setCategories(data))
       .catch((err) => console.log(err));
   }, []);
-  const router = useRouter();
+
 
   const orderHandler = () => {
     if (order) {
@@ -93,16 +109,18 @@ const ShopSide = ({ url }) => {
   return (
     <div>
       {/* -----search section----- */}
-      {/* <div className="bg-white py-2 px-3 shadow-light rounded-lg relative">
+      <div className="bg-white py-2 px-3 shadow-light rounded-lg relative mb-5">
         <input
           type="text"
-          placeholder="در بین دوره ها جست و جو کنید"
-          className="w-full bg-gray-100 rounded-lg py-4 px-4 outline-none transition-all duration-200 ease-in-out focus:w-72  text-gray-700"
+          placeholder="در بین محصولات جست و جو کنید"
+          className="w-full bg-gray-100 rounded-lg py-4 px-4 outline-none text-gray-700"
+          onChange={(e)=>setSearchInput(e.target.value)}
+              onKeyDown={searchInputHandler}
         />
-        <button>
+        <button onClick={searchHandler}>
           <IoIosSearch className="absolute top-6 left-4 w-6 h-6" />
         </button>
-      </div> */}
+      </div>
 
       <div className="bg-white rounded-lg shadow-light py-5 px-3 mb-5">
         <button
@@ -189,7 +207,7 @@ const ShopSide = ({ url }) => {
       </div> */}
 
       {/*  type of */}
-      {/* <div className="bg-white rounded-lg shadow-light py-5 px-3 mt-5">
+      <div className="bg-white rounded-lg shadow-light py-5 px-3 mt-5">
         <h2 className="text-lg">مرتب سازی</h2>
         <div className="py-2">
           <div className="py-2 flex items-center gap-5">
@@ -231,7 +249,7 @@ const ShopSide = ({ url }) => {
             ثبت
           </button>
         </div>
-      </div> */}
+      </div>
 
       {/* price */}
       {/* <div className="bg-white rounded-lg shadow-light py-5 px-3 mt-5">
