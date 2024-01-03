@@ -75,8 +75,35 @@ body{font-family: Vazirmatn;}
   src: local('dana'), url('https://fonts.cdnfonts.com/s/87601/dana extrabold.woff') format('woff');
 }
 
+
 @layer utilities {
   .ltr {
     direction: ltr;
   }
+  .loader {
+  
+    border: 5px solid #fff;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+    .loader-blue {
+  
+      border: 5px solid #4f69ee;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      display: inline-block;
+      box-sizing: border-box;
+      animation: rotation 1s linear infinite;
+      }
+    @keyframes rotation {
+      0% {
+          transform: rotate(0deg);
+      }
+      100% {
+          transform: rotate(360deg);
+      }
+      } 
 }

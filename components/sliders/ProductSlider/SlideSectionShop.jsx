@@ -7,9 +7,9 @@ import { CiSearch } from "react-icons/ci";
 import { SlBasket } from "react-icons/sl";
 
 
-const SlideSection = ({data:{ _id,title, price, image, categories,slug },userFavoriteProduct}) => {
+const SlideSectionShop = ({data:{ _id,title, price, image, categories,slug },userFavoriteProduct}) => {
   
-console.log(categories);
+
 
   return (
     <div className="w-full min-h-52 shadow-light rounded-lg overflow-hidden flex flex-col justify-between">
@@ -25,7 +25,7 @@ console.log(categories);
         {categories && categories.map((item, index) => (
           <Link
             href={`/category/${item.slug}`}
-            key={index}
+            key={item._id}
             className="bg-purple-100 text-purple-600 m-1 py-1 px-2 text-xs rounded-md transition-all duration-500 ease-in-out hover:bg-purple-600 hover:text-purple-200"
           >
             {item.title}
@@ -53,4 +53,4 @@ console.log(categories);
   );
 };
 
-export default SlideSection;
+export default SlideSectionShop;

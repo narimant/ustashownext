@@ -37,9 +37,7 @@ const Header = () => {
                   صفحه اصلی
                   </Link>
               </li>
-              <li>
-                <Link href="#" className="hover:text-purple-600"> بازی کامپیوتری</Link>
-              </li>
+            
               <li>
                 <Link href="/shop" className="hover:text-purple-600"> فروشگاه </Link>
               </li>

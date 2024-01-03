@@ -1,10 +1,24 @@
-import React from 'react';
+import MyAcountMainPage from '@/components/myAcount/MainPage';
 
-const MyAcount = () => {
+
+
+
+
+const MyAcount = async() => {
+ 
+    
+
     return (
-        <div>
-           my acount 
-        </div>
+      <div className='grid grid-5'>
+        
+     
+   
+    
+        <MyAcountMainPage />
+       
+     </div>
+     
+
     );
 };
 

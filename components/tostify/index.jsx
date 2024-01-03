@@ -5,9 +5,9 @@ import "react-toastify/dist/ReactToastify.css";
 const Tostify = () => {
   return (
     <>
-      {" "}
+ 
       <ToastContainer
-        bodyClassName={() => "font-[estedad] text-sm"}
+        bodyClassName={() => "font-Vazirmatn text-sm"}
         position="top-right"
         autoClose={3000}
         theme="colored"

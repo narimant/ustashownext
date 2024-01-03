@@ -1,7 +1,8 @@
 import Link from "next/link";
 
-import SlideSection from "../sliders/ProductSlider/SlideSection";
 import toFormUrlEncoded from "@/utils/toUrlEncoded";
+import SlideSectionShop from "../sliders/ProductSlider/SlideSectionShop";
+import { cookies } from "next/headers";
 
 const getData = async (url) => {
   const toUrlEncoded = toFormUrlEncoded(url);
@@ -11,8 +12,23 @@ const getData = async (url) => {
   const data = await result.json();
   return data;
 };
+
+
+const getUserFavorite = async (value) => {
+  const result = await fetch("http://localhost:27017/api/get-user-data/", {
+    cache: "no-store",
+    headers: { auth: value },
+  });
+  const data = await result.json();
+console.log(data);
+  return data;
+};
 const ShopMainSide = async ({ url }) => {
   const data = await getData(url);
+  const cookieStore = cookies();
+  const auth_cookie = cookieStore.get("auth");
+
+  const userData = await getUserFavorite(auth_cookie?.value);
 
   return (
     <div>
@@ -21,7 +37,7 @@ const ShopMainSide = async ({ url }) => {
       ) : (
         <div className="grid grid-cols-4 gap-4">
           {data.allProducts.map((product, index) => (
-            <SlideSection key={index} data={product} />
+            <SlideSectionShop key={index} data={product}  userFavoriteProduct={userData.favoriteProducts}/>
           ))}
         </div>
       )}

@@ -2,6 +2,7 @@
 import Header from '@/components/header'
 import '../globals.css'
 import Footer from '@/components/footer'
+import Tostify from '@/components/tostify'
 
 
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
        <Header />
         {children}
       <Footer />
+      <Tostify />
         </body>
     </html>
   )

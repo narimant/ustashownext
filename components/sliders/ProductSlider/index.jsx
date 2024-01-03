@@ -1,10 +1,24 @@
-"use client";
 import Link from "next/link";
-
+import { cookies } from "next/headers";
 import SlideSection from "./SlideSection";
 import { MdArrowBackIos } from "react-icons/md";
 
-const ProductSlider = ({ title, data, link }) => {
+const getData = async (value) => {
+  const result = await fetch("http://localhost:27017/api/get-user-data/", {
+    cache: "no-store",
+    headers: { auth: value },
+  });
+
+  const data = await result.json();
+console.log('nariman',data);
+  return data;
+};
+const ProductSlider = async ({ title, data, link }) => {
+  const cookieStore = cookies();
+  const auth_cookie = cookieStore.get("auth");
+  
+  const userData = await getData(auth_cookie?.value);
+
 
   return (
     <div className="container mx-auto my-16">
@@ -21,17 +35,7 @@ const ProductSlider = ({ title, data, link }) => {
 
       <div className="grid grid-cols-4 gap-4">
         {data.map((item, index) => (
-       
-            
-           
-             <SlideSection
-                key={index}
-              data={item}
-                
-              />
-        
-            
-        
+          <SlideSection key={index} data={item} userFavoriteProduct={userData.favoriteProducts}/>
         ))}
       </div>
     </div>

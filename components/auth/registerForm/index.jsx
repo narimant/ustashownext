@@ -1,17 +1,45 @@
 "use client";
+import axios from "axios";
+import Cookies from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+
+
 const RegisterForm = () => {
+
+  const [loader,setLoader]=useState(false);
+  const router=useRouter();
+
   const formSubmiter = (e) => {
+    setLoader(true);
     const formData = {
       displayName: watch("displayName"),
       email: watch("email"),
       password: watch("password"),
       rePassword: watch("rePassword"),
     };
-  
+    const url="http://localhost:27017/api/new-user"
+  axios.post(url,formData)
+  .then(data=>{
+    Cookies.set("auth",data.data.auth)
+    setLoader(false);
+    router.push('/')
+  })
+  .catch(error=>{
+    setLoader(false);
+    toast.error(error.response.data.msg, {
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+   });
+  })
   };
   const {
     register,
@@ -141,7 +169,7 @@ const RegisterForm = () => {
             className="bg-blue-500 text-white rounded-lg transition-all duration-500  hover:bg-blue-600 py-3 px-4 w-full"
             type="submit"
           >
-            ثبت نام
+       {loader ? (<span className="loader h-6 w-6"></span>) : ( <span>   ورود</span>) }  
           </button>
         </form>
       
