@@ -13,6 +13,7 @@ const getData = async (slug) => {
   return data;
 };
 
+
 const SignePageShop = async ({ params: { slug } }) => {
   const data = await getData(slug);
 

@@ -1,4 +1,4 @@
-import FavoriteElement from "@/components/favorite/FavoriteElement";
+import FavoriteElement from "@/components/element/favorite/FavoriteElement";
 
 
 import Image from "next/image";
@@ -9,7 +9,7 @@ import { SlBasket } from "react-icons/sl";
 
 const SlideSection = ({data:{ _id,title, price, image, categories,slug },userFavoriteProduct}) => {
   
-console.log(categories);
+
 
   return (
     <div className="w-full min-h-52 shadow-light rounded-lg overflow-hidden flex flex-col justify-between">
@@ -39,12 +39,14 @@ console.log(categories);
           <button>
             <CiSearch className="h-5 w-5" />
           </button>
+
         <FavoriteElement productId={_id} favoriteList={userFavoriteProduct}/>
+       
         </div>
         <div className="flex justify-end items-center gap-3">
-          <button>
+          <Link    href={`/shop/${slug}`}>
             <SlBasket className="h-5 w-5" />
-          </button>
+          </Link>
           <p>{price} تومان</p>
         </div>
       </div>

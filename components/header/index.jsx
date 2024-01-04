@@ -74,7 +74,7 @@ const Header = () => {
           </Link>
 
           <Link
-            href="cart"
+            href="/cart"
             className=" inline-block bg-green-400 p-2 text-white rounded-lg"
           >
      

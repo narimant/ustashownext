@@ -1,6 +1,25 @@
-import { SlBasket } from "react-icons/sl";
+
 import Image from "next/image";
-const SingleHead = ({data}) => {
+import AddToCartButton from "../element/addToCart/AddToCartButton";
+import { cookies } from "next/headers";
+
+
+const getUserData = async () => {
+  const cookieStore = cookies();
+  const value = cookieStore.get("auth");
+  const result = await fetch("http://localhost:27017/api/get-user-data/", {
+    cache: "no-store",
+    headers: { auth: value },
+  });
+  const data = await result.json();
+
+  return data;
+};
+
+
+
+const SingleHead =async ({data}) => {
+  const userData=await getUserData();
     return (
         <div className="container w-full">
         {/* -------------head section----------- */}
@@ -15,10 +34,9 @@ const SingleHead = ({data}) => {
               </p>
             </div>
             <div className="flex justify-between items-center">
-              <button className="py-4 px-6 rounded-lg shadow-light text-white bg-purple-500 flex justify-start gap-3 items-center text-lg font-dana">
-                <SlBasket className="" />
-                خرید این محصول
-              </button>
+
+              <AddToCartButton productId={data._id}  userCart={userData.cart}/>
+             
               <span className="font-dana text-lg">{data.price} هزار تومان</span>
             </div>
           </div>

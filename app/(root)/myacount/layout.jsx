@@ -15,14 +15,14 @@ const getData = async (value) => {
       redirect('/login')
     }
 
-    return data;
+    
   };
 const Layout = async ({children}) => {
 
     const cookieStore = cookies();
     const auth_cookie = cookieStore.get("auth");
    
-      const data = await getData(auth_cookie?.value);
+    await getData(auth_cookie?.value);
     return (
         <div className='grid grid-cols-5 container mx-auto bg-white my-5 shadow-light rounded-lg p-5'>
           

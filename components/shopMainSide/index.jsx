@@ -14,21 +14,22 @@ const getData = async (url) => {
 };
 
 
-const getUserFavorite = async (value) => {
+const getUserFavorite = async () => {
+  const cookieStore = cookies();
+  const value = cookieStore.get("auth");
   const result = await fetch("http://localhost:27017/api/get-user-data/", {
     cache: "no-store",
     headers: { auth: value },
   });
   const data = await result.json();
-console.log(data);
+
   return data;
 };
 const ShopMainSide = async ({ url }) => {
   const data = await getData(url);
-  const cookieStore = cookies();
-  const auth_cookie = cookieStore.get("auth");
+  
 
-  const userData = await getUserFavorite(auth_cookie?.value);
+  const userData = await getUserFavorite();
 
   return (
     <div>

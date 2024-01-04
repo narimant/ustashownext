@@ -10,7 +10,7 @@ const getData = async (value) => {
   });
 
   const data = await result.json();
-console.log('nariman',data);
+
   return data;
 };
 const ProductSlider = async ({ title, data, link }) => {

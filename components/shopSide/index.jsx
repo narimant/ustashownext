@@ -35,7 +35,7 @@ const ShopSide = ({ url }) => {
       setMaxsNumber(url.max);
       setType(url.type);
       setSelectCat(url.categories ? url.categories.split(',') : []);
-      console.log(typeof(selectCat));
+      
     }
 
     axios
@@ -89,16 +89,14 @@ const ShopSide = ({ url }) => {
     if(e.target.checked){
      
       setSelectCat([...selectCat, e.target.value])
-      console.log(selectCat);
+    
     }else{
       setSelectCat((prevData)=>{
         return prevData.filter((item)=>item!==e.target.value)})
     }
 
   };
-  useEffect(() => {
-    console.log(selectCat);
-  }, [selectCat]);
+
   const categoriesHandler = () => {
 
     url.categories = selectCat.toString();

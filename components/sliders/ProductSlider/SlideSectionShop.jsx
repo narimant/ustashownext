@@ -1,4 +1,4 @@
-import FavoriteElement from "@/components/favorite/FavoriteElement";
+import FavoriteElement from "@/components/element/favorite/FavoriteElement";
 
 
 import Image from "next/image";

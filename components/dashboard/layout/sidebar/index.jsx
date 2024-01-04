@@ -8,6 +8,8 @@ import { PiFlagBanner } from "react-icons/pi";
 import { SlNote } from "react-icons/sl";
 import { MdProductionQuantityLimits } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
+import { LuUsers } from "react-icons/lu";
+
 
 const DashboardSidebar = () => {
 
@@ -82,6 +84,17 @@ const DashboardSidebar = () => {
           <span>    محصولات</span>
         </Link>
         
+        <Link
+          href="/dashboard/users"
+          className={`flex justify-start items-center gap-4 text-lg px-5 rounded-lg ${
+            router.startsWith("/dashboard/users") && "bg-purple-600"
+          } `}
+        >
+          <LuUsers />
+          <span>   کاربران</span>
+        </Link>
+
+
         <Link
           href="/dashboard/setting"
           className={`flex justify-start items-center gap-4 text-lg px-5 rounded-lg ${

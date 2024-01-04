@@ -134,9 +134,9 @@ const RelatedPost = ({ relatedPostData, model }) => {
                   </button>
                 </div>
                 <div className="flex justify-end items-center gap-3">
-                  <button>
+                  <Link href={`/shop/${post.slug}`}>
                     <SlBasket className="h-5 w-5" />
-                  </button>
+                  </Link >
                   <p>{post.price} تومان</p>
                 </div>
               </div>
