@@ -1,16 +1,17 @@
 "use client";
 import axios from "axios";
 import Cookies from "js-cookie";
-
-import { SlBasket } from "react-icons/sl";
-
+import { useAppContext } from "@/context/appContext";
 import React, { useEffect, useState } from "react";
 import { TbBasketPlus } from "react-icons/tb";
 import { TbBasketMinus } from "react-icons/tb";
 import { toast } from "react-toastify";
+
+
 const AddToCartButton = ({ productId, cartList }) => {
   const [loader, setLoader] = useState(false);
   const [userCookie, setUserCookie] = useState("");
+const {cartNumber,setCartNumber}=useAppContext();
 
   const [findItem, setFindItem] = useState(false);
 
@@ -48,7 +49,10 @@ const AddToCartButton = ({ productId, cartList }) => {
       .post("http://localhost:27017/api/cart-manager", myData, {
         headers: { auth: userCookie },
       })
-      .then((data) => setFindItem(!findItem))
+      .then((data) => {
+        setFindItem(!findItem);
+        setCartNumber(cartNumber+1)
+      })
       .catch((error) => console.log(error));
   };
 

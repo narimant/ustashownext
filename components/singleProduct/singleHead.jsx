@@ -19,6 +19,7 @@ const getUserData = async () => {
 
 
 const SingleHead =async ({data}) => {
+
   const userData=await getUserData();
     return (
         <div className="container w-full">

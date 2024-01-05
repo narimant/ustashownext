@@ -4,6 +4,7 @@ import { BsFiles } from "react-icons/bs";
 import RelatedPost from "../blog/singlePage/RelatedPost";
 
 const SingleRightSide = ({ data }) => {
+
   return (
     <div className="col-span-2">
       {/* ----right section---- */}

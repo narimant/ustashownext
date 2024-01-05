@@ -5,10 +5,13 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Danger from "../alerts/Danger";
+import { useAppContext } from "@/context/appContext";
 const CartMainPage = ( {userData,userCookie} ) => {
   const [cartData, setCartData] = useState([-1]);
   const [newData,setNewData]=useState([-1])
   const [totalPrice,setTotalPrice]=useState(0)
+const {cartNumber,setCartNumber}=useAppContext();
+
   useEffect(() => {
     setTotalPrice(0)
    if(newData[0]!==-1)
@@ -20,7 +23,7 @@ const CartMainPage = ( {userData,userCookie} ) => {
   
     setCartData(userData.cart);
    }
-   
+   setCartNumber(cartData.length)
   cartData[0]!== -1 && cartData.map(item=>setTotalPrice(prev=>prev+Number(item.price)))
   
 
@@ -86,7 +89,7 @@ const CartMainPage = ( {userData,userCookie} ) => {
 
             <div className="flex justify-between items-center">
                 <span className="font-semibold">مجموع قیمت :</span>
-                <span className="py-2 px-3 bg-green-600 text-white rounded-lg" >{totalPrice}</span>
+                <span className="py-2 px-3 bg-green-600 text-white rounded-lg" >{totalPrice} تومان </span>
                 </div>
           </div>
         )
