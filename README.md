@@ -1,33 +1,34 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+# File Shop
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+this project created with front end nextjs and backend with nodejs and express
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## file shop backend
 
-## Learn More
+- [file shop backend project](https://github.com/narimant/ustashownodejs)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+
+## Documentation
+
+this project created with next js v13 and app route system for file and folder structure
+you can download this project and use it for Practice or develop and use yourself
+if you have a question from this project send me a message!
+anyway I am also developing this project so that I can make the project usable in the final form
+
+
+
+
+## Installation
+
+
+    
 
 ## Deploy on Vercel
 
