@@ -19,7 +19,7 @@ const LoginForm = () => {
       password: watch("password"),
   
     };
-    const url="http://localhost:27017/api/user-login"
+    const url="https://distracted-mcnulty-orq2ubkyw.liara.run/api/user-login"
     axios.post(url,formData)
     .then(data=>{
       Cookies.set("auth",data.data.auth)

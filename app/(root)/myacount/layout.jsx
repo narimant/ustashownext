@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { redirect } from 'next/navigation'
 const getData = async (value) => {
  
-    const result = await fetch("http://localhost:27017/api/get-user-data/", {
+    const result = await fetch("https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-user-data/", {
       cache: "no-store",
       headers: { auth: value },
     });

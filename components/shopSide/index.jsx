@@ -39,7 +39,7 @@ const ShopSide = ({ url }) => {
     }
 
     axios
-      .get("http://localhost:27017/api/get-all-category")
+      .get("https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-all-category")
       .then((data) => setCategories(data))
       .catch((err) => console.log(err));
   }, []);
@@ -78,7 +78,7 @@ const ShopSide = ({ url }) => {
     setSelectCat([]);
     setCategories([-1]);
     axios
-      .get("http://localhost:27017/api/get-all-category")
+      .get("https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-all-category")
       .then((data) => setCategories(data))
       .catch((err) => console.log(err));
     router.push("/shop");

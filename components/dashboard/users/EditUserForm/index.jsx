@@ -20,7 +20,7 @@ const EditUserForm = ({ data }) => {
 
     axios
       .patch(
-        `http://localhost:27017/api/update-user/${data._id}`,
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-user/${data._id}`,
         formData
       )
       .then((data) => {

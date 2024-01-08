@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 const getData = async (url) => {
   const toUrlEncoded = toFormUrlEncoded(url);
   const result = await fetch(
-    `http://localhost:27017/api/search-products?${toUrlEncoded}`
+    `https://distracted-mcnulty-orq2ubkyw.liara.run/api/search-products?${toUrlEncoded}`
   );
   const data = await result.json();
   return data;
@@ -17,9 +17,10 @@ const getData = async (url) => {
 const getUserFavorite = async () => {
   const cookieStore = cookies();
   const value = cookieStore.get("auth");
-  const result = await fetch("http://localhost:27017/api/get-user-data/", {
+
+  const result = await fetch("https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-user-data/", {
     cache: "no-store",
-    headers: { auth: value },
+    headers: { auth: value.value },
   });
   const data = await result.json();
 
@@ -30,9 +31,10 @@ const ShopMainSide = async ({ url }) => {
   
 
   const userData = await getUserFavorite();
-
+console.log(userData);
   return (
     <div>
+     
       {data.allProducts.length < 1 ? (
         <div>محصولی با این شرایط موجود نیست</div>
       ) : (

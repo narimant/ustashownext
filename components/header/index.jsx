@@ -20,7 +20,7 @@ const [authCookie,setAuthCookie]=useState(Cookies.get("auth"));
 const {cartNumber,setCartNumber}=useAppContext();
   useEffect(() => {
     axios
-      .get("http://localhost:27017/api/cart-number", { headers: {auth:authCookie} })
+      .get("https://distracted-mcnulty-orq2ubkyw.liara.run/api/cart-number", { headers: {auth:authCookie} })
       .then((data) =>setCartNumber(data.data.number))
       .catch((error) => console.log(error));
   });

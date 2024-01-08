@@ -43,7 +43,7 @@ const FavoriteElement = ({ productId, favoriteList }) => {
       method: method,
     };
     axios
-      .post("http://localhost:27017/api/favorite-products", myData, {
+      .post("https://distracted-mcnulty-orq2ubkyw.liara.run/api/favorite-products", myData, {
         headers: { auth: userCookie },
       })
       .then((data) => setFindItem(!findItem))

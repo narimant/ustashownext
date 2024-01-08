@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 const getUserData = async () => {
   const cookieStore = cookies();
   const value = cookieStore.get("auth");
-  const result = await fetch("http://localhost:27017/api/get-user-data/", {
+  const result = await fetch("https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-user-data/", {
     cache: "no-store",
     headers: { auth: value },
   });

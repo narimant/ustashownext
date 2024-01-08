@@ -39,7 +39,7 @@ const UseInfo = () => {
 
     axios
       .patch(
-        `http://localhost:27017/api/update-mini-user/${data._id}`,
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-mini-user/${data._id}`,
         formData
       )
       .then((data) => {
@@ -58,7 +58,7 @@ const UseInfo = () => {
   };
   useEffect(() => {
     axios
-      .get("http://localhost:27017/api/get-part-of-user-data/info", {
+      .get("https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-part-of-user-data/info", {
         headers: { auth: cookie },
       })
       .then((d) => {

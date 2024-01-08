@@ -22,7 +22,7 @@ const RegisterForm = () => {
       password: watch("password"),
       rePassword: watch("rePassword"),
     };
-    const url="http://localhost:27017/api/new-user"
+    const url="https://distracted-mcnulty-orq2ubkyw.liara.run/api/new-user"
   axios.post(url,formData)
   .then(data=>{
     Cookies.set("auth",data.data.auth)

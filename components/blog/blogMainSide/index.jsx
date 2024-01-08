@@ -7,7 +7,7 @@ import Warning from "@/components/alerts/Warning";
 const getData = async (url) => {
   const toUrlEncoded = toFormUrlEncoded(url);
   const result = await fetch(
-    `http://localhost:27017/api/search-posts?${toUrlEncoded}`
+    `https://distracted-mcnulty-orq2ubkyw.liara.run/api/search-posts?${toUrlEncoded}`
   );
   const data = await result.json();
   return data;

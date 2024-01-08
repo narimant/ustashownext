@@ -12,7 +12,7 @@ const Favorite = () => {
   const [loader, setLoader] = useState(true);
   useEffect(() => {
     axios
-      .get("http://localhost:27017/api/get-part-of-user-data/favorite", {
+      .get("https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-part-of-user-data/favorite", {
         headers: { auth: cookie },
       })
       .then((d) => {

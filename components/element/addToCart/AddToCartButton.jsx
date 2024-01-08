@@ -46,7 +46,7 @@ const {cartNumber,setCartNumber}=useAppContext();
       method: method,
     };
     axios
-      .post("http://localhost:27017/api/cart-manager", myData, {
+      .post("https://distracted-mcnulty-orq2ubkyw.liara.run/api/cart-manager", myData, {
         headers: { auth: userCookie },
       })
       .then((data) => {
