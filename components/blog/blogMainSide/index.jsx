@@ -35,6 +35,7 @@ const BlogMainSide = async ({ url }) => {
 
             return (
               <Link
+              
                 key={index}
                 href={`/blog?${urlTOPageinate}`}
                 className={`py-1 px-3 bg-purple-600 rounded-full text-white ${

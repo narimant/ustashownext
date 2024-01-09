@@ -93,7 +93,16 @@ const DashboardSidebar = () => {
           <LuUsers />
           <span>   کاربران</span>
         </Link>
-
+ 
+        <Link
+          href="/dashboard/comments"
+          className={`flex justify-start items-center gap-4 text-lg px-5 rounded-lg ${
+            router.startsWith("/dashboard/comments") && "bg-purple-600"
+          } `}
+        >
+          <LuUsers />
+          <span>   نظرات</span>
+        </Link>
 
         <Link
           href="/dashboard/setting"

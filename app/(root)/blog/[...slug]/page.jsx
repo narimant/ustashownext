@@ -6,23 +6,23 @@ import { CiCalendarDate } from "react-icons/ci";
 import ArticleSlider from "@/components/sliders/article-slider";
 import Image from "next/image";
 import Sidebar from "@/components/blog/singlePage/Sidebar";
-import Comment from "@/components/blog/singlePage/Comment";
-import { data } from "autoprefixer";
+import Comment from "@/components/comments/Comment";
 import RelatedPost from "@/components/blog/singlePage/RelatedPost";
 import Link from "next/link";
+import CommentList from "@/components/comments/CommentList";
 
 
 const getData=async ({params: { slug }})=>{
 
-  const result=await fetch(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-post/${slug}`,{"cache":"no-store"})
+  const result=await fetch(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-post/${slug}`,{cahce:"no-store"})
   const data=await result.json();
-
   return data;
 }
 const SignePageBlog =async (props) => {
 
-  const {title,slug,image,imageAlt,shortDesc,body,tags,relatedPosts,comments,pageView,date,updatedAt}=await getData(props);
+  const {_id,title,slug,image,imageAlt,shortDesc,body,tags,relatedPosts,comments,pageView,date,updatedAt}=await getData(props);
 
+  const commentPorops={src_id:_id,typeOfModel:"post"}
   return (
     <div className="container mx-auto">
       <div className="w-full">
@@ -76,8 +76,9 @@ const SignePageBlog =async (props) => {
           <div className="bg-white rounded-lg shadow-light px-5 pb-3 border-gray-700">
            <RelatedPost relatedPostData={relatedPosts} model="post"/>
           </div>
-
-          <Comment />
+          
+          <Comment commentPorops={commentPorops}/>
+          <CommentList commentPorops={commentPorops}/>
         </div>
 
         {/*--------- sidebar--------- */}

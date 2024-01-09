@@ -2,9 +2,12 @@ import { IoMdBrush } from "react-icons/io";
 import { IoResizeOutline } from "react-icons/io5";
 import { BsFiles } from "react-icons/bs";
 import RelatedPost from "../blog/singlePage/RelatedPost";
+import Comment from "../comments/Comment";
+import CommentList from "../comments/CommentList";
 
 const SingleRightSide = ({ data }) => {
-
+  console.log(data);
+  const commentPorops={src_id:data._id,typeOfModel:"product"}
   return (
     <div className="col-span-2">
       {/* ----right section---- */}
@@ -46,7 +49,8 @@ const SingleRightSide = ({ data }) => {
            <RelatedPost relatedPostData={data.relatedProducts} model="product"/>
           </div>
       </div>
-
+      <Comment commentPorops={commentPorops}/>
+          <CommentList commentPorops={commentPorops}/>
       {/* ----left section----- */}
       <div></div>
     </div>
