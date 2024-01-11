@@ -1,9 +1,9 @@
-"use client"
+
 import Link from 'next/link';
 
 import SlideSection from './SlideSection';
 import { MdArrowBackIos } from "react-icons/md";
-import Pager from '@/components/blog/pager';
+
 
 const getData=async()=>{
     const result=await fetch("https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-new-post",{cache:"no-store"})

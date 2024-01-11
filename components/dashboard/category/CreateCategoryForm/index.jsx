@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import "react-toastify/dist/ReactToastify.css"; 
 import { Toast, ToastContainer, toast } from "react-toastify";
 import InputElement from "../../post/InputElement/InputElement";
+import Cookies from "js-cookie";
 const CreateCategoryForm = () => {
 
 
@@ -18,7 +19,7 @@ const CreateCategoryForm = () => {
   const [shortDesc, setShortDesc] = useState("");
   const [situation, setSituation] = useState(false);
 
-
+  const auth=Cookies.get('auth')
 
 
  
@@ -38,7 +39,7 @@ const CreateCategoryForm = () => {
     axios
       .post(
         `https://distracted-mcnulty-orq2ubkyw.liara.run/api/new-category`,
-        formData
+        formData,{headers:{auth:auth}}
       )
       .then((data) => {
         toast.success("دستهبندی مورد نظر با موفقیت ایجاد شد", {

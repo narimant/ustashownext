@@ -4,14 +4,16 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import InputElement from "../InputElement/InputElement";
+import CKeditor from "../../CKeditor";
 import "react-toastify/dist/ReactToastify.css"; 
 import { Toast, ToastContainer, toast } from "react-toastify";
+import Cookies from "js-cookie";
 const CreatePostForm = () => {
   const tagsRef = useRef();
   const [relatedPost, setRelatedPost] = useState([]);
   const router = useRouter();
   const [title, setTitle] = useState("");
-
+  const auth=Cookies.get('auth')
   const [slug, setSlug] = useState("");
   const [image, setImage] = useState("");
   const [imageAlt, setImageAlt] = useState("");
@@ -21,7 +23,8 @@ const CreatePostForm = () => {
   // const seoDescriptionRef=useState();
   const [tag, setTag] = useState([]);
   const [published, setPublished] = useState(false);
-
+  const [editorLoaded, setEditorLoaded] = useState(false);
+  const [data, setData] = useState("");
   // TAG MANAGING
 
   const tagSuber = (e) => {
@@ -63,7 +66,7 @@ const CreatePostForm = () => {
     axios
       .post(
         `https://distracted-mcnulty-orq2ubkyw.liara.run/api/new-post`,
-        formData
+        formData,{headers:{auth:auth}}
       )
       .then((data) => {
         toast.success("پست مورد نظر با موفقیت ایجاد شد", {
@@ -82,9 +85,10 @@ const CreatePostForm = () => {
   // get all posts for show and select related posts
   const [posts, setPosts] = useState([]);
   useEffect(() => {
+    setEditorLoaded(true);
     const postUrl = "https://distracted-mcnulty-orq2ubkyw.liara.run/api/posts";
     axios
-      .get(postUrl)
+      .get(postUrl,{headers:{auth:auth}})
       .then((data) => {
         setPosts(data.data);
       
@@ -122,14 +126,21 @@ const CreatePostForm = () => {
             state={slug}
             setState={setSlug}
           />
-          <InputElement
+          {/* <InputElement
             inputType="textarea"
             label="متن کامل پست"
             id="body"
             state={body}
             setState={setBody}
-          />
-
+          /> */}
+<CKeditor
+        name="description"
+        onChange={(data) => {
+          setBody(data);
+        }}
+        editorLoaded={editorLoaded}
+      />
+      
           <InputElement
             label="متن کوتاه پست"
             id="shorDesc"

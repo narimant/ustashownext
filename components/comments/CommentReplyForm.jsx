@@ -25,7 +25,7 @@ const CommentReplyForm = ({replayData}) => {
               typeOfModel: replayData.typeOfModel,
             };
             axios
-              .post(`http://localhost:27017/api/new-comment`, formData, {
+              .post(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/new-comment`, formData, {
                 headers: { auth: auth },
               })
               .then(data=>{

@@ -20,7 +20,7 @@ const getUserFavorite = async () => {
 
   const result = await fetch("https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-user-data/", {
     cache: "no-store",
-    headers: { auth: value.value },
+    headers: { auth: value?.value },
   });
   const data = await result.json();
 
@@ -31,7 +31,7 @@ const ShopMainSide = async ({ url }) => {
   
 
   const userData = await getUserFavorite();
-console.log(userData);
+
   return (
     <div>
      

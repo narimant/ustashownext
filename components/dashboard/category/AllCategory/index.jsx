@@ -2,6 +2,7 @@
 import Loading from "@/app/(root)/loading";
 import CheckImage from "@/utils/checkImage";
 import axios from "axios";
+import Cookies from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -13,7 +14,7 @@ const AllCategory = () => {
   const [category, setCategory] = useState([]);
   const [pageNumber, SetPageNumber] = useState(1);
   const [numbersOfBtn, setNumbersOfBtn] = useState([1]);
-
+  const auth=Cookies.get('auth')
   useEffect(() => {
     getFetchData(pageNumber);
   }, [pageNumber]);
@@ -22,7 +23,7 @@ const AllCategory = () => {
     setIsLoading(true);
     axios
       .get(
-        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-all-category?pn=${pageNumber}`
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-all-category?pn=${pageNumber}`,{headers:{auth:auth}}
       )
       .then((data) => {
        
@@ -44,7 +45,7 @@ const AllCategory = () => {
     axios
       .delete(
         `https://distracted-mcnulty-orq2ubkyw.liara.run/api/delete-category`,
-        { data: params }
+        {headers:{auth:auth},data:params}
       )
       .then((d) => {
         toast.success("اسلایدر مورد نظر با موفقیت حذف شد", {

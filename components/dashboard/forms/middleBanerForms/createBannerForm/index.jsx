@@ -1,6 +1,7 @@
 "use client"
 
 import axios from "axios";
+import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
 
@@ -10,7 +11,7 @@ const CreateBannerForm = () => {
     const imageAltRef=useRef();
     const imageLinkRef=useRef();
     const imageSetuationRef=useRef();
-
+    const auth=Cookies.get('auth')
     const submitHandler=(e)=>{
         e.preventDefault()
         const formData={
@@ -20,7 +21,7 @@ const CreateBannerForm = () => {
             link: imageLinkRef.current.value,
         }
        
-        axios.post(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/new-middle-baners`,formData).then(data=>{router.push('/dashboard/banners')}).catch(error=>console.log("error"))
+        axios.post(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/new-middle-baners`,{headers:{auth:auth}},formData).then(data=>{router.push('/dashboard/banners')}).catch(error=>console.log("error"))
     }
   return (
     <div className="rounded-lg p-5 bg-white shadow-light">

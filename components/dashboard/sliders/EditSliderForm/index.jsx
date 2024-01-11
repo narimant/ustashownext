@@ -1,5 +1,6 @@
 "use client";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
 import React, { useEffect, useState } from "react";
@@ -13,13 +14,14 @@ const URL="https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-slider";
   const [situation, setSituation] = useState(false);
   const [link, setLink] = useState("");
   const router=useRouter();  
-
+  const auth=Cookies.get('auth')
   useEffect(() => {
     setImage(data.image);
     setImageAlt(data.imageAlt);
     setSituation(data.situation);
     setLink(data.link);
   }, []);
+
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -31,7 +33,7 @@ const URL="https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-slider";
       link
     }
 
-    axios.patch(URL,fromData).then(d=>{
+    axios.patch(URL,fromData,{headers:{auth:auth}}).then(d=>{
       router.push('/dashboard/sliders');
    
     }
@@ -87,7 +89,7 @@ const URL="https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-slider";
                 وضعیت نمایش
               </label>
               
-              <select     onChange={(e)=>setSituation(JSON.parse(e.target.value))} className="bg-gray-100 rounded-lg w-full outline-none py-3 px-3 " value={situation.toString()} >
+              <select     onChange={(e)=>setSituation(JSON.parse(e.target.value))} className="bg-gray-100 rounded-lg w-full outline-none py-3 px-3 " value={situation} >
                 <option value={true} >روشن</option>
                 <option value={false}>خاموش</option>
               </select>

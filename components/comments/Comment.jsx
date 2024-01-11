@@ -5,11 +5,13 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import Warning from "../alerts/Warning";
 const Comment = ({commentPorops}) => {
 
     const [comment, setComment] = useState("");
     const [auth, setAuth] = useState(Cookies.get("auth"));
     const router = useRouter();
+
     const sendCommentHandler = () => {
     if (auth === undefined || auth.length < 10) {
         Cookies.set("auth", "", { expires: 0 });
@@ -22,7 +24,7 @@ const Comment = ({commentPorops}) => {
           typeOfModel: commentPorops.typeOfModel,
         };
         axios
-          .post(`http://localhost:27017/api/new-comment`, formData, {
+          .post(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/new-comment`, formData, {
             headers: { auth: auth },
           })
           .then(data=>{
@@ -51,23 +53,28 @@ const Comment = ({commentPorops}) => {
     };
     return (
         <div className="bg-white h-auto rounded-lg shadow-light p-5 border-gray-700 mt-5">
-        <div className='min-h-20'>
-        <InputElement
-        inputType="textarea"
-        label=" متن نظر"
-        id="body"
-        state={comment}
-        setState={setComment}
-      />
-      <div>
-        <button
-          onClick={sendCommentHandler}
-          className="py-2 px-3 rounded-lg bg-blue-600 text-white hover:bg-blue-800"
-        >
-          ارسال نظر
-        </button>
-      </div>
-        </div>
+          {auth ? (
+              <div className='min-h-20'>
+              <InputElement
+              inputType="textarea"
+              label=" متن نظر"
+              id="body"
+              state={comment}
+              setState={setComment}
+            />
+            <div>
+              <button
+                onClick={sendCommentHandler}
+                className="py-2 px-3 rounded-lg bg-blue-600 text-white hover:bg-blue-800"
+              >
+                ارسال نظر
+              </button>
+            </div>
+              </div>
+          ):(
+            <Warning title="برای ارسال نظر ابتدا وارد حساب کاربری خود شوید" />
+          )}
+      
     </div>
     );
 };

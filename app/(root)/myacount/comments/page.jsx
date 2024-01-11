@@ -12,11 +12,11 @@ const MyComments = () => {
   const [loader, setLoader] = useState(true);
   useEffect(() => {
     axios
-      .get("http://localhost:27017/api/get-part-of-user-data/comments", {
+      .get("https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-part-of-user-data/comments", {
         headers: { auth: cookie },
       })
       .then((d) => {
-        console.log(d.data);
+    
         setData(d.data);
 
         setLoader(false);

@@ -2,6 +2,7 @@
 import Loading from "@/app/(root)/loading";
 import CheckImage from "@/utils/checkImage";
 import axios from "axios";
+import Cookies from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -12,7 +13,7 @@ const MiddleBannerAll = () => {
   const [banners, setBanners] = useState([]);
   const [pageNumber, SetPageNumber] = useState(1);
   const [numbersOfBtn, setNumbersOfBtn] = useState([1]);
-
+  const auth=Cookies.get('auth')
   useEffect(() => {
     getFetchData(pageNumber);
   }, [pageNumber]);
@@ -21,7 +22,7 @@ const MiddleBannerAll = () => {
     setIsLoading(true);
     axios
       .get(
-        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/middle-baners?pn=${pageNumber}`
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/middle-baners?pn=${pageNumber}`,{headers:{auth:auth}}
       )
       .then((data) => {
         setBanners(data.data.GoalMidBans);

@@ -10,6 +10,7 @@ import Comment from "@/components/comments/Comment";
 import RelatedPost from "@/components/blog/singlePage/RelatedPost";
 import Link from "next/link";
 import CommentList from "@/components/comments/CommentList";
+import NotFound from "../../not-found";
 
 
 const getData=async ({params: { slug }})=>{
@@ -21,7 +22,9 @@ const getData=async ({params: { slug }})=>{
 const SignePageBlog =async (props) => {
 
   const {_id,title,slug,image,imageAlt,shortDesc,body,tags,relatedPosts,comments,pageView,date,updatedAt}=await getData(props);
-
+if(!_id){
+  return(<NotFound />)
+}
   const commentPorops={src_id:_id,typeOfModel:"post"}
   return (
     <div className="container mx-auto">

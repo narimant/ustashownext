@@ -2,6 +2,7 @@
 import Loading from "@/app/(root)/loading";
 import CheckImage from "@/utils/checkImage";
 import axios from "axios";
+import Cookies from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -13,7 +14,7 @@ const AllComments = () => {
   const [posts, setPosts] = useState([]);
   const [pageNumber, SetPageNumber] = useState(1);
   const [numbersOfBtn, setNumbersOfBtn] = useState([1]);
-
+  const auth=Cookies.get('auth')
   useEffect(() => {
     getFetchData(pageNumber);
   }, [pageNumber]);
@@ -22,7 +23,7 @@ const AllComments = () => {
     setIsLoading(true);
     axios
       .get(
-        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/comments?pn=${pageNumber}`
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/comments?pn=${pageNumber}`,{headers:{auth:auth}}
       )
       .then((data) => {
         setPosts(data.data.GolComments);
@@ -55,7 +56,7 @@ const AllComments = () => {
       })
       .catch((e) => console.log(e));
   };
-console.log(posts);
+
   return (
 
     <div className="bg-white rounded-lg shadow-light w-full p-5 ">

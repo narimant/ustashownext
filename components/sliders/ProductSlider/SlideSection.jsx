@@ -24,7 +24,7 @@ const SlideSection = ({data:{ _id,title, price, image, categories,slug },userFav
       <div className="p-2">
         {categories && categories.map((item, index) => (
           <Link
-            href={`/category/${item.slug}`}
+            href={`/shop?categories=${item.slug}`}
             key={index}
             className="bg-purple-100 text-purple-600 m-1 py-1 px-2 text-xs rounded-md transition-all duration-500 ease-in-out hover:bg-purple-600 hover:text-purple-200"
           >

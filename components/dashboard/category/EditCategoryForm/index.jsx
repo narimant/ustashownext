@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 
 import React, { useEffect, useState } from "react";
 import InputElement from "../../post/InputElement/InputElement";
+import Cookies from "js-cookie";
 const EditCategoryForm = ({ data }) => {
 const URL=`https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-category/${data._id}`;
 
@@ -14,7 +15,7 @@ const [imageAlt, setImageAlt] = useState("");
 const [shortDesc, setShortDesc] = useState("");
 const [situation, setSituation] = useState(false);
   const router=useRouter();  
-
+  const auth=Cookies.get('auth')
   useEffect(() => {
     setTitle(data.title);
     setSlug(data.slug);
@@ -35,7 +36,7 @@ const [situation, setSituation] = useState(false);
       situation:situation
     };
 
-    axios.patch(URL,formData).then(d=>{
+    axios.patch(URL,formData,{headers:{auth:auth}}).then(d=>{
      router.push('/dashboard/category');
    
     }

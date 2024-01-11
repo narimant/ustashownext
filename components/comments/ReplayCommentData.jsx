@@ -10,8 +10,8 @@ const ReplayCommentData = ({parent_id}) => {
     const [commentForm,setCommentForm]=useState(false)
   
    useEffect(()=>{
-console.log(parent_id);
-            axios.get(`http://localhost:27017/api/get-comment-children/${parent_id}`)
+
+            axios.get(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-comment-children/${parent_id}`)
             .then(data=>{
              
              setReplayData(data.data)
@@ -22,7 +22,7 @@ console.log(parent_id);
                 })
         },[showReplay])
 
-console.log(parent_id);
+
         return (
         <div>
             {/* {(replayData[0]!==-1 && replayData.length >0) ?
@@ -55,7 +55,7 @@ console.log(parent_id);
                                              )}
                                              
                                              {showReplay && (
-                                                <>{comment._id}nariman
+                                                <>
                                                 <ReplayCommentData parentId={comment._id} />
                                                 </>
                                             )}

@@ -43,7 +43,7 @@ const UseInfo = () => {
         formData
       )
       .then((data) => {
-        console.log(data);
+     
       })
       .catch((error) => {
         toast.error(error.response.data.msg, {

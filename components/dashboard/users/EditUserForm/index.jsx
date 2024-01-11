@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import InputElement from "../InputElement/InputElement";
 import { toast } from "react-toastify";
-
+const auth=Cookies.get('auth')
 
 const EditUserForm = ({ data }) => {
   const [displayName,setDisplayName]=useState(data.displayName)
@@ -20,7 +20,7 @@ const EditUserForm = ({ data }) => {
 
     axios
       .patch(
-        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-user/${data._id}`,
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-user/${data._id}`,{headers:{auth:auth}},
         formData
       )
       .then((data) => {

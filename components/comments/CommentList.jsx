@@ -11,24 +11,29 @@ const CommentList = ({commentPorops}) => {
     const [data,setData]=useState([-1])
     const [loader,setLoader]=useState(false);
     const [commentForm,setCommentForm]=useState(false)
-
+    const [count,setCount]=useState(0)
     const [showReplay,setShowReplay]=useState(false);
     useEffect(()=>{
         setLoader(true)
-        axios.get(`http://localhost:27017/api/get-model-comments/${commentPorops.src_id}`)
+        axios.get(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-model-comments/${commentPorops.src_id}`)
         .then(data=>{
-         
+            
             setLoader(false)
             setData(data.data)
         }).catch(error=>{
                 setLoader(false)
              
             })
+
+
+            axios.get(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/comment-count/${commentPorops.src_id}`)
+            .then(data=>setCount(data.data))
+            .catch(error=>console.log(error))
     },[])
 
     return (
         <div className="bg-white h-auto rounded-lg shadow-light p-5 border-gray-700 mt-5">
-        <h3 className="w-full text-xl font-medium"><span>نظرات</span></h3>
+        <h3 className="w-full text-xl font-medium relative"><span>نظرات</span> <span className=' py-1 px-2  border-b-red-400 border-b absolute  text-xs font-extralight   '>{count}</span></h3>
             {
             loader==true? 
             (

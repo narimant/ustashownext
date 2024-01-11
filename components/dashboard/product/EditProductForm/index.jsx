@@ -5,11 +5,12 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import InputElement from "../InputElement/InputElement";
 import { toast } from "react-toastify";
+import Cookies from "js-cookie";
 
 const EditProductForm = ({ data }) => {
   const tagsRef = useRef();
   const featuresRef=useRef();
- 
+  const auth=Cookies.get('auth')
   const router = useRouter();
   const [title, setTitle] = useState(data.title);
   const [relatedProduct, setRelatedProduct] = useState(data.relatedProducts);
@@ -96,7 +97,7 @@ const EditProductForm = ({ data }) => {
     axios
       .patch(
         `https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-product/${data._id}`,
-        formData
+        formData,{headers:{auth:auth}}
       )
       .then((data) => {
         toast.success("پست مورد نظر با موفقیت ایجاد شد", {
@@ -107,7 +108,7 @@ const EditProductForm = ({ data }) => {
           draggable: true,
           progress: undefined,
         });
-        //router.push("/dashboard/posts");
+        router.push("/dashboard/products");
       })
       .catch((error) => console.log(error));
   };
@@ -118,7 +119,7 @@ const EditProductForm = ({ data }) => {
   useEffect(() => {
     const peoductsUrl = "https://distracted-mcnulty-orq2ubkyw.liara.run/api/products";
     axios
-      .get(peoductsUrl)
+      .get(peoductsUrl,{headers:{auth:auth}})
       .then((data) => {
         setProducts(data.data);
       })
@@ -127,7 +128,7 @@ const EditProductForm = ({ data }) => {
 
       const categoryUrl = "https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-all-category";
       axios
-        .get(categoryUrl)
+        .get(categoryUrl,{headers:{auth:auth}})
         .then((data) => {
           setCategory(data.data);
         })

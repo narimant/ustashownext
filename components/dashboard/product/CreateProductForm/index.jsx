@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import InputElement from "../InputElement/InputElement";
 import "react-toastify/dist/ReactToastify.css";
 import { Toast, ToastContainer, toast } from "react-toastify";
+import Cookies from "js-cookie";
 
 const CreateProductForm = () => {
   const tagsRef = useRef();
@@ -13,7 +14,7 @@ const CreateProductForm = () => {
   const [relatedProduct, setRelatedProduct] = useState([]);
   const router = useRouter();
   const [title, setTitle] = useState("");
-
+  const auth=Cookies.get('auth')
   const [slug, setSlug] = useState("");
   const [image, setImage] = useState("");
   const [imageAlt, setImageAlt] = useState("");
@@ -96,7 +97,7 @@ const CreateProductForm = () => {
     axios
       .post(
         `https://distracted-mcnulty-orq2ubkyw.liara.run/api/new-product`,
-        formData
+        formData,{headers:{auth:auth}}
       )
       .then((data) => {
         toast.success("پست مورد نظر با موفقیت ایجاد شد", {
@@ -118,7 +119,7 @@ const CreateProductForm = () => {
   useEffect(() => {
     const peoductsUrl = "https://distracted-mcnulty-orq2ubkyw.liara.run/api/products";
     axios
-      .get(peoductsUrl)
+      .get(peoductsUrl,{headers:{auth:auth}})
       .then((data) => {
         setProducts(data.data);
       })
@@ -127,7 +128,7 @@ const CreateProductForm = () => {
 
       const categoryUrl = "https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-all-category";
       axios
-        .get(categoryUrl)
+        .get(categoryUrl,{headers:{auth:auth}})
         .then((data) => {
           setCategory(data.data);
         })

@@ -5,18 +5,20 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import InputElement from "../InputElement/InputElement";
 import { toast } from "react-toastify";
-
+import Cookies from "js-cookie";
+import CKeditor from "../../CKeditor";
 const EditPostForm = ({ data }) => {
   const tagsRef = useRef();
   const [relatedPosts, setRelatedPosts] = useState(data.relatedPosts);
   const router = useRouter();
   const [title, setTitle] = useState(data.title);
-
+  const auth=Cookies.get('auth')
   const [slug, setSlug] = useState(data.slug);
   const [image, setImage] = useState(data.image);
   const [imageAlt, setImageAlt] = useState(data.imageAlt);
   const [shortDesc, setShortDesc] = useState(data.shortDesc);
   const [body, setBody] = useState(data.body);
+  const [editorLoaded, setEditorLoaded] = useState(false);
   // const seoTitleRef=useState();
   // const seoDescriptionRef=useState();
   const [tag, setTag] = useState(data.tags);
@@ -63,7 +65,7 @@ const EditPostForm = ({ data }) => {
     axios
       .patch(
         `https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-post/${data._id}`,
-        formData
+        formData,{headers:{auth:auth}}
       )
       .then((data) => {
         toast.success("پست مورد نظر با موفقیت بروزرسانی شد", {
@@ -77,15 +79,16 @@ const EditPostForm = ({ data }) => {
         router.push("/dashboard/posts");
   
       })
-      .catch((error) => console.log("error"));
+      .catch((error) => console.log(error));
   };
 
   // get all posts for show and select related posts
   const [posts, setPosts] = useState([]);
   useEffect(() => {
+    setEditorLoaded(true);
     const postUrl = "https://distracted-mcnulty-orq2ubkyw.liara.run/api/posts";
     axios
-      .get(postUrl)
+      .get(postUrl,{headers:{auth:auth}})
       .then((data) => {
         setPosts(data.data);
       })
@@ -123,13 +126,15 @@ const EditPostForm = ({ data }) => {
             state={slug}
             setState={setSlug}
           />
-          <InputElement
-            inputType="textarea"
-            label="متن کامل پست"
-            id="body"
-            state={body}
-            setState={setBody}
-          />
+        <CKeditor
+       
+        value={body}
+        name="description"
+        onChange={(data) => {
+          setBody(data);
+        }}
+        editorLoaded={editorLoaded}
+      />
 
           <InputElement
             label="متن کوتاه پست"
@@ -158,7 +163,7 @@ const EditPostForm = ({ data }) => {
             <select
               id="published"
               className="bg-gray-100 rounded-lg w-full outline-none py-3 px-3"
-              value={published.toString()}
+              value={published}
               onChange={(e) => setPublished(e.target.value)}
             >
               <option value={true}>انتشار</option>

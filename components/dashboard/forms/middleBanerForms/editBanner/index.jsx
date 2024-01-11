@@ -1,5 +1,6 @@
 "use client";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
 import React, { useEffect, useState } from "react";
@@ -13,7 +14,7 @@ const URL="https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-middle-bane
   const [situation, setSituation] = useState(false);
   const [link, setLink] = useState("");
   const router=useRouter();  
-
+  const auth=Cookies.get('auth')
   useEffect(() => {
     setImage(data.image);
     setImageAlt(data.imageAlt);
@@ -30,7 +31,7 @@ const URL="https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-middle-bane
       situation,
       link
     }
-    axios.patch(URL,fromData).then(d=>{
+    axios.patch(URL,{headers:{auth:auth}},fromData).then(d=>{
       router.push('/dashboard/banners');
    
     }

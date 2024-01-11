@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import InputElement from "../InputElement/InputElement";
 import { toast } from "react-toastify";
 import Link from "next/link";
+import Cookies from "js-cookie";
 
 const EditCommentForm = ({ data }) => {
 
@@ -19,6 +20,7 @@ const EditCommentForm = ({ data }) => {
   const [updatedAt, setUpdatedAd] = useState(data.goalComment.updatedAt);
   const [typeOfModel,setTypeOfModel]=useState(data.goalComment.typeOfModel)
   const [parentId,setParentId]=useState(data.goalComment.parentId)
+  const auth=Cookies.get('auth')
   const submitHandler = (e) => {
     e.preventDefault();
     const formData = {
@@ -30,7 +32,7 @@ const EditCommentForm = ({ data }) => {
 
     axios
       .patch(
-        `http://localhost:27017/api/update-comment/${data.goalComment._id}`,
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-comment/${data.goalComment._id}`,{headers:{auth:auth}},
         formData
       )
       .then((data) => {

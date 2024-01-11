@@ -2,6 +2,7 @@
 import Loading from "@/app/(root)/loading";
 import CheckImage from "@/utils/checkImage";
 import axios from "axios";
+import Cookies from "js-cookie";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -13,7 +14,7 @@ const AllProducts = () => {
   const [products, setProducts] = useState([]);
   const [pageNumber, SetPageNumber] = useState(1);
   const [numbersOfBtn, setNumbersOfBtn] = useState([1]);
-
+  const auth=Cookies.get('auth')
   useEffect(() => {
     getFetchData(pageNumber);
   }, [pageNumber]);
@@ -22,7 +23,7 @@ const AllProducts = () => {
     setIsLoading(true);
     axios
       .get(
-        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/products?pn=${pageNumber}`
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/products?pn=${pageNumber}`,{headers:{auth:auth}}
       )
       .then((data) => {
         setProducts(data.data.GolProducts);
@@ -40,7 +41,7 @@ const AllProducts = () => {
 
     axios
       .delete(
-        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/delete-product/${id}`
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/delete-product/${id}`,{headers:{auth:auth}}
       )
       .then((d) => {
         toast.success("پست مورد نظر با موفقیت حذف شد", {

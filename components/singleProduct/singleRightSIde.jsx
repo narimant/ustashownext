@@ -6,7 +6,7 @@ import Comment from "../comments/Comment";
 import CommentList from "../comments/CommentList";
 
 const SingleRightSide = ({ data }) => {
-  console.log(data);
+
   const commentPorops={src_id:data._id,typeOfModel:"product"}
   return (
     <div className="col-span-2">

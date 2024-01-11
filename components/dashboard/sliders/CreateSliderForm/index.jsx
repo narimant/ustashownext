@@ -1,6 +1,7 @@
 "use client"
 
 import axios from "axios";
+import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
 
@@ -11,7 +12,7 @@ const CreateSliderForm = () => {
     const imageLinkRef=useRef();
     const imageSorterRef=useRef();
     const imageSetuationRef=useRef();
-
+    const auth=Cookies.get('auth')
     const submitHandler=(e)=>{
         e.preventDefault()
         const formData={
@@ -23,7 +24,7 @@ const CreateSliderForm = () => {
         }
   
        
-        axios.post(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/new-slider`,formData).then(data=>{router.push('/dashboard/sliders')}).catch(error=>console.log(error))
+        axios.post(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/new-slider`,formData,{headers:{auth:auth}}).then(data=>{router.push('/dashboard/sliders')}).catch(error=>console.log(error))
     }
   return (
     <div className="rounded-lg p-5 bg-white shadow-light">

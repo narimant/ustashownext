@@ -40,7 +40,7 @@ const {cartNumber,setCartNumber}=useAppContext();
 
   const favoriteHandle = (id, method) => {
     setLoader(true);
-    console.log(id, method);
+
     const myData = {
       productId: id,
       method: method,

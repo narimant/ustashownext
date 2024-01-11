@@ -11,7 +11,7 @@ const getData=async (id)=>{
 const EditPost = async({params: { userId }}) => {
    
     const data=await getData(userId);
-  console.log(data);
+ 
     return (
    
         <EditUserForm  data={data}/>

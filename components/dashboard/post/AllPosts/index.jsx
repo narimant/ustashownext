@@ -2,9 +2,11 @@
 import Loading from "@/app/(root)/loading";
 import CheckImage from "@/utils/checkImage";
 import axios from "axios";
+import Cookies from "js-cookie";
+
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -13,6 +15,7 @@ const AllPosts = () => {
   const [posts, setPosts] = useState([]);
   const [pageNumber, SetPageNumber] = useState(1);
   const [numbersOfBtn, setNumbersOfBtn] = useState([1]);
+const auth=Cookies.get('auth')
 
   useEffect(() => {
     getFetchData(pageNumber);
@@ -20,9 +23,10 @@ const AllPosts = () => {
 
   const getFetchData = (pageNumber) => {
     setIsLoading(true);
+ 
     axios
       .get(
-        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/posts?pn=${pageNumber}`
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/posts?pn=${pageNumber}`,{headers:{auth:auth}}
       )
       .then((data) => {
         setPosts(data.data.GolPosts);
@@ -40,7 +44,7 @@ const AllPosts = () => {
 
     axios
       .delete(
-        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/delete-post/${id}`
+        `https://distracted-mcnulty-orq2ubkyw.liara.run/api/delete-post/${id}`,{headers:{auth:auth}}
       )
       .then((d) => {
         toast.success("پست مورد نظر با موفقیت حذف شد", {
@@ -69,6 +73,7 @@ const AllPosts = () => {
               <th className="  ">تصویر</th>
             
               <th className="  ">وضعیت نمایش</th>
+              <th className="  "> عنوان پست</th>
               <th className=" "> تاریخ</th>
               <th className="  "> تنظیمات</th>
             </tr>
@@ -83,8 +88,8 @@ const AllPosts = () => {
                         ? item.image
                         : "/images/middle-banner/no-image.png"
                     }
-                    width={200}
-                    height={150}
+                    width={120}
+                    height={80}
                     alt={item.imageAlt}
                     priority={true}
                     className="w-auto h-auto"
@@ -100,6 +105,7 @@ const AllPosts = () => {
                     <div className="bg-red-500 text-white inline-block py-2 px-3 rounded-lg">خاموش</div>
                   )}
                 </td>
+                <td className="border border-slate-300 "><Link href={`/blog/${item.slug}`} className="text-blue-600">{item.title}</Link></td>
                 <td className="border border-slate-300 ">{item.date}</td>
                 <td className="border border-slate-300 ">
                   <Link

@@ -26,7 +26,8 @@ const LoginForm = () => {
       setLoader(false);
       router.push('/')
     }).catch(error=>{
-      toast.error(error.response.data.msg, {
+    
+      toast.error(error.response?.data.msg, {
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
