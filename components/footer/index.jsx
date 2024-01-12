@@ -12,10 +12,10 @@ const Footer = () => {
     });
   };
   return (
-    <footer className="w-full bg-white shadow-light mt-8">
+    <footer className="w-full bg-white shadow-light mt-8 dark:bg-slate-700">
       <div className="container mx-auto grid  grid-cols-3 p-8">
         <div className="flex flex-col justify-center items-center p-8 text-center  text-sm">
-          <Image src="/images/logo.jpg" width={100} height={80} alt="logo" className="w-auto h-auto" />
+          <Image src="/images/logo.png" width={100} height={80} alt="logo" className="w-auto h-auto" />
           <p className="px-12 pt-4">
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
             استفاده از طراحان گرافیک است

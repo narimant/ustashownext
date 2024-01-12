@@ -1,16 +1,18 @@
 "use client"
 
+import Warning from "@/components/alerts/Warning";
 import axios from "axios";
 import Cookies from "js-cookie";
-import Image from "next/image";
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const MyComments = () => {
     const [data, setData] = useState([-1]);
-  const cookie = Cookies.get("auth");
+
   const [loader, setLoader] = useState(true);
   useEffect(() => {
+    const cookie = Cookies.get("auth");
     axios
       .get("https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-part-of-user-data/comments", {
         headers: { auth: cookie },

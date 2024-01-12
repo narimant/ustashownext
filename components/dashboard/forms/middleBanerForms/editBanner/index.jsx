@@ -31,7 +31,7 @@ const URL="https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-middle-bane
       situation,
       link
     }
-    axios.patch(URL,{headers:{auth:auth}},fromData).then(d=>{
+    axios.patch(URL,fromData,{headers:{auth:auth}}).then(d=>{
       router.push('/dashboard/banners');
    
     }
@@ -84,9 +84,9 @@ const URL="https://distracted-mcnulty-orq2ubkyw.liara.run/api/update-middle-bane
 
             <div>
               <label htmlFor="image_addres" className="cursor-pointer">
-                وضعیت نمایش
+                وضعیت نمایش    
               </label>
-              
+         
               <select     onChange={(e)=>setSituation(e.target.value)} className="bg-gray-100 rounded-lg w-full outline-none py-3 px-3 " defaultValue={situation} >
                 <option value={true} >روشن</option>
                 <option value={false}>خاموش</option>

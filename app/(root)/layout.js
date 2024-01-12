@@ -3,7 +3,7 @@ import Header from '@/components/header'
 import '../globals.css'
 import Footer from '@/components/footer'
 import Tostify from '@/components/tostify'
-
+import Provider from '@/components/darkMode/Provider'
 import ContextProvider from '@/context/contextProvider'
 
 export const metadata = {
@@ -14,12 +14,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir='rtl'>
-      <body className='bg-gray-100'>
+      <body className='bg-gray-100 dark:bg-slate-800'>
+        <Provider>
         <ContextProvider>
        <Header />
         {children}
       <Footer />
       </ContextProvider>
+      </Provider>
       <Tostify />
         </body>
     </html>

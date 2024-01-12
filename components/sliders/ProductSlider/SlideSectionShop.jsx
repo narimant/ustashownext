@@ -12,8 +12,10 @@ const SlideSectionShop = ({data:{ _id,title, price, image, categories,slug },use
 
 
   return (
-    <div className="w-full min-h-52 shadow-light rounded-lg overflow-hidden flex flex-col justify-between">
-      <Link href={`/shop/${slug}`}><Image
+    <div className="w-full min-h-52 shadow-light rounded-lg overflow-hidden flex flex-col justify-between bg-white dark:bg-slate-600">
+      <div className="flex justify-center items-center grow">
+      <Link href={`/shop/${slug}`}>
+        <Image
         src={image}
         width={300}
         height={260}
@@ -21,6 +23,10 @@ const SlideSectionShop = ({data:{ _id,title, price, image, categories,slug },use
         className="w-full"
       />
       </Link>
+      </div>
+     
+   
+      <div>
       <div className="p-2">
         {categories && categories.map((item, index) => (
           <Link
@@ -32,7 +38,6 @@ const SlideSectionShop = ({data:{ _id,title, price, image, categories,slug },use
           </Link>
         ))}
       </div>
-      <div>
       <Link href={`/shop/${slug}`}><h2 className="text-lg p-3"> {title}</h2></Link>
       <div className="flex justify-between items-center p-3">
         <div className="flex justify-start gap-4">

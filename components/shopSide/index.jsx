@@ -107,11 +107,11 @@ const ShopSide = ({ url }) => {
   return (
     <div>
       {/* -----search section----- */}
-      <div className="bg-white py-2 px-3 shadow-light rounded-lg relative mb-5">
+      <div className="bg-white dark:bg-slate-700  py-2 px-3 shadow-light rounded-lg relative mb-5">
         <input
           type="text"
           placeholder="در بین محصولات جست و جو کنید"
-          className="w-full bg-gray-100 rounded-lg py-4 px-4 outline-none text-gray-700"
+          className="w-full bg-gray-100 rounded-lg py-4 px-4 outline-none text-gray-700 dark:bg-transparent dark:border dark:border-slate-600"
           onChange={(e)=>setSearchInput(e.target.value)}
               onKeyDown={searchInputHandler}
         />
@@ -120,7 +120,7 @@ const ShopSide = ({ url }) => {
         </button>
       </div>
 
-      <div className="bg-white rounded-lg shadow-light py-5 px-3 mb-5">
+      <div className="bg-white rounded-lg shadow-light py-5 px-3 mb-5 dark:bg-slate-600">
         <button
           className="w-full bg-green-600 text-white py-2  rounded-lg inline-block hover:bg-green-800 "
           onClick={clearFilterHandler}
@@ -130,7 +130,7 @@ const ShopSide = ({ url }) => {
       </div>
 
       {/* categories */}
-      <div className="bg-white rounded-lg shadow-light py-5 px-3 mb-5">
+      <div className="bg-white rounded-lg shadow-light py-5 px-3 mb-5 dark:bg-slate-600">
         <h2 className="text-lg"> انتخاب دسته بندی</h2>
         <div className="py-2">
           {categories[0] !== -1 &&
@@ -205,7 +205,7 @@ const ShopSide = ({ url }) => {
       </div> */}
 
       {/*  type of */}
-      <div className="bg-white rounded-lg shadow-light py-5 px-3 mt-5">
+      <div className="bg-white rounded-lg shadow-light py-5 px-3 mt-5 dark:bg-slate-600">
         <h2 className="text-lg">مرتب سازی</h2>
         <div className="py-2">
           <div className="py-2 flex items-center gap-5">

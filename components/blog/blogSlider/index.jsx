@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const BlogSlider = ({data:{ title, updatedAt,pageView ,date, image, categories,slug }}) => {
   return (
-    <div className="w-full min-h-52 shadow-light rounded-lg overflow-hidden flex flex-col justify-between">
+    <div className="w-full min-h-52 shadow-light rounded-lg overflow-hidden flex flex-col justify-between dark:bg-slate-700">
       <Link href={`/blog/${slug}`}><Image
         src={image}
         width={300}

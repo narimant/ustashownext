@@ -12,7 +12,7 @@ const SlideSection = ({data:{ _id,title, price, image, categories,slug },userFav
 
 
   return (
-    <div className="w-full min-h-52 shadow-light rounded-lg overflow-hidden flex flex-col justify-between">
+    <div className="w-full  shadow-light rounded-lg overflow-hidden flex flex-col justify-between bg-white  min-h-[450px] dark:bg-slate-700">
       <Link href={`/shop/${slug}`}><Image
         src={image}
         width={300}

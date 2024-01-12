@@ -5,7 +5,7 @@ import { CiBookmark } from "react-icons/ci";
 import { SlBasket } from "react-icons/sl";
 const SlideSection = ({data:{title,image,slug,imageAlt,shortDesc,tags,pageView,updatedAt}}) => {
     return (
-        <div className="w-full min-h-52 shadow-light rounded-lg overflow-hidden flex flex-col justify-between">
+        <div className="w-full min-h-52 shadow-light rounded-lg overflow-hidden flex flex-col justify-between dark:bg-slate-700">
            
            <Link href={`blog/${slug}`}> <Image src={image} width={300} height={260} alt={imageAlt} className="w-full"  /></Link>
             <div className="p-2">
@@ -19,10 +19,10 @@ const SlideSection = ({data:{title,image,slug,imageAlt,shortDesc,tags,pageView,u
                         {shortDesc}
             </div>
             <div className="flex justify-between items-center m-3 border-t text-xs py-4">
-                <div className="flex justify-start bg-gray-200 py-1 px-2 rounded-lg">
+                <div className="flex justify-start bg-gray-200 py-1 px-2 rounded-lg dark:bg-transparent">
                     {updatedAt}
                 </div>
-               <div className="flex justify-end items-center   bg-gray-200 py-1 px-2 rounded-lg">
+               <div className="flex justify-end items-center   bg-gray-200 py-1 px-2 rounded-lg dark:bg-transparent">
                     {pageView}
                </div>
                

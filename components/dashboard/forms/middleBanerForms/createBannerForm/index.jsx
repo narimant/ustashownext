@@ -21,7 +21,7 @@ const CreateBannerForm = () => {
             link: imageLinkRef.current.value,
         }
        
-        axios.post(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/new-middle-baners`,{headers:{auth:auth}},formData).then(data=>{router.push('/dashboard/banners')}).catch(error=>console.log("error"))
+        axios.post(`https://distracted-mcnulty-orq2ubkyw.liara.run/api/new-middle-baners`,formData,{headers:{auth:auth}}).then(data=>{router.push('/dashboard/banners')}).catch(error=>console.log(error))
     }
   return (
     <div className="rounded-lg p-5 bg-white shadow-light">

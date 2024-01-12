@@ -40,7 +40,8 @@ const SingleRightSide = ({ data }) => {
           <h1 className="text-2xl  border-gray-200 pb-6 ">توضیخات</h1>
 
           <div className="leading-9 text-zinc-700 font-light font-dana text-xl">
-            <p>{data.body}</p>
+         
+            <p className="font-Vazirmatn" dangerouslySetInnerHTML={{ __html: data.body }}></p>
           </div>
         </div>
 

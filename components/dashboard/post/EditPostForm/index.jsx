@@ -6,7 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import InputElement from "../InputElement/InputElement";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
-import CKeditor from "../../CKeditor";
+// import Ckeditor from "@/components/Ckeditor";
+
 const EditPostForm = ({ data }) => {
   const tagsRef = useRef();
   const [relatedPosts, setRelatedPosts] = useState(data.relatedPosts);
@@ -48,6 +49,7 @@ const EditPostForm = ({ data }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+
     const formData = {
       title: title,
       slug: slug,
@@ -126,15 +128,16 @@ const EditPostForm = ({ data }) => {
             state={slug}
             setState={setSlug}
           />
-        <CKeditor
-       
-        value={body}
-        name="description"
-        onChange={(data) => {
-          setBody(data);
-        }}
-        editorLoaded={editorLoaded}
-      />
+        
+
+
+        <InputElement
+        inputType="textarea"
+            label="متن کامل پست"
+            id="shorDesc"
+            state={body}
+            setState={setBody}
+          />
 
           <InputElement
             label="متن کوتاه پست"

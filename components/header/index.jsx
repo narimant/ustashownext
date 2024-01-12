@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import logo from "../../public/images/logo.jpg";
+import logo from "../../public/images/logo.png";
 import Link from "next/link";
 import { IoIosSearch } from "react-icons/io";
 import { SlBasket } from "react-icons/sl";
@@ -11,8 +11,9 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useAppContext } from "@/context/appContext";
-
+import ThemeSwitcher from "../darkMode/ThemeSwitcher"; 
 const Header = () => {
+
   const [searchInput, setSearchInput] = useState("");
   const router = useRouter();
   
@@ -23,7 +24,8 @@ const {cartNumber,setCartNumber}=useAppContext();
       .get("https://distracted-mcnulty-orq2ubkyw.liara.run/api/cart-number", { headers: {auth:authCookie} })
       .then((data) =>setCartNumber(data.data.number))
       .catch((error) => console.log(error));
-  });
+     
+  },[]);
   const searchHandler = (e) => {
     const url = `/shop?keyword=${searchInput}`;
     setSearchInput("");
@@ -37,7 +39,7 @@ const {cartNumber,setCartNumber}=useAppContext();
     }
   };
   return (
-    <div className="w-full shadow-light border-b border-gray-200 bg-white ">
+    <div className="w-full shadow-light border-b border-gray-200 bg-white  dark:bg-slate-800 dark:border-slate-600 dark:text-white">
       <div className="container flex justify-between mx-auto py-4">
         <div className="flex justify-start items-center gap-4 py-4">
           <Link href="/">
@@ -76,7 +78,7 @@ const {cartNumber,setCartNumber}=useAppContext();
           <div className="relative">
             <input
               type="text"
-              className="bg-gray-100 w-48 rounded-2xl py-4 px-4 outline-none transition-all duration-200 ease-in-out focus:w-72  text-gray-700"
+              className="bg-gray-100 w-48 rounded-2xl py-4 px-4 outline-none transition-all duration-200 ease-in-out focus:w-72  text-gray-700 dark:text-white dark:bg-transparent dark:border dark:border-slate-600"
               placeholder=" جست و جو محصولات "
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
@@ -87,10 +89,10 @@ const {cartNumber,setCartNumber}=useAppContext();
             </button>
           </div>
 
-          <button className=" bg-gray-100 p-3 rounded-full hover:bg-gray-200">
+          {/* <button className=" bg-gray-100 p-3 rounded-full hover:bg-gray-200">
             <IoMoonOutline className="w-6 h-6 " />
-          </button>
-
+          </button> */}
+<ThemeSwitcher />
           <Link
             href="/myacount"
             className=" inline-block bg-purple-400 p-2 text-white rounded-lg"

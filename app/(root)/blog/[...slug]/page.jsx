@@ -20,7 +20,7 @@ const getData=async ({params: { slug }})=>{
   return data;
 }
 const SignePageBlog =async (props) => {
-
+  const content = `<b>Test<br> Content</b>`;
   const {_id,title,slug,image,imageAlt,shortDesc,body,tags,relatedPosts,comments,pageView,date,updatedAt}=await getData(props);
 if(!_id){
   return(<NotFound />)
@@ -65,11 +65,12 @@ if(!_id){
              
             </div>
             <div className="leading-9 text-zinc-700 font-light font-dana text-xl">
-              <p>
-                
-               {body}
-              
-              </p>
+            <div>
+       
+                <p className="font-Vazirmatn" dangerouslySetInnerHTML={{ __html: body }}></p>
+       
+             
+               </div>
               <div>
                 {tags.map((item,index)=>(<span key={index} className="text-sm text-blue-600 hover:text-purple-600 mx-1"><Link href="#"># {item}</Link></span>))}
               </div>

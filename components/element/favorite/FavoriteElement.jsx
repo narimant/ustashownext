@@ -59,7 +59,7 @@ const FavoriteElement = ({ productId, favoriteList }) => {
           </button>
         ) : (
           <button onClick={() => favoriteHandle(productId, "push")}>
-            <CiBookmark className="h-5 w-5 text-blue-600" />
+            <CiBookmark className="h-5 w-5 text-blue-600 dark:text-white" />
           </button>
         )}
       </>

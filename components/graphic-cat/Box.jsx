@@ -5,7 +5,7 @@ import React from 'react';
 const Box = ({title,imageUrl,paragraf,linkHref}) => {
     return (
         <Link href={`/shop?categories=${linkHref}`}>
-        <div className='flex justify-between items-center p-4  bg-gray-100 rounded-lg hover:shadow-xl'>
+        <div className='flex justify-between items-center p-4 dark:bg-transparent dark:border dark:border-slate-600  bg-gray-100 rounded-lg hover:shadow-xl'>
             <div className='grid grid-flow-row gap-2'>
                 <h3 className='text-lg font-bold'>
                    {title}

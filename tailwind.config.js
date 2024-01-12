@@ -2,6 +2,7 @@
 
 
 module.exports = {
+  darkMode: ["class"],
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -14,7 +15,7 @@ module.exports = {
     },
     extend: {
       boxShadow: {
-        'light': 'rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;',
+        'light': '0px 0px 15px 6px rgba(0,0,0,0.1)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

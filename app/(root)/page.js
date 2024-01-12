@@ -28,7 +28,10 @@ export default async function Home() {
         <ProductSlider title="کتاب ها" data={data.bookProducts} itemType="book" link="/shop?type=book"/>
         <GraphicCat />
 
-        <GraphicSlider title="فایل های گرافیکی" data={data.grProducts} itemType="gr" link="/shop?type=gr"/>
+
+        <ProductSlider title="فایل های گرافیکی" data={data.grProducts} itemType="gr" link="/shop?type=gr"/>
+
+        {/* <GraphicSlider title="فایل های گرافیکی" data={data.grProducts} itemType="gr" link="/shop?type=gr"/> */}
 
         <ArticleSlider title="آخرین مقالات" />
       </main>

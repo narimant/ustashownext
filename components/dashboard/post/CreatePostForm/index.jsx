@@ -4,7 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import InputElement from "../InputElement/InputElement";
-import CKeditor from "../../CKeditor";
+
 import "react-toastify/dist/ReactToastify.css"; 
 import { Toast, ToastContainer, toast } from "react-toastify";
 import Cookies from "js-cookie";
@@ -126,20 +126,14 @@ const CreatePostForm = () => {
             state={slug}
             setState={setSlug}
           />
-          {/* <InputElement
+          <InputElement
             inputType="textarea"
             label="متن کامل پست"
             id="body"
             state={body}
             setState={setBody}
-          /> */}
-<CKeditor
-        name="description"
-        onChange={(data) => {
-          setBody(data);
-        }}
-        editorLoaded={editorLoaded}
-      />
+          />
+
       
           <InputElement
             label="متن کوتاه پست"

@@ -40,7 +40,7 @@ const MiddleBannerAll = () => {
     axios
       .delete(
         `https://distracted-mcnulty-orq2ubkyw.liara.run/api/delete-middle-baners`,
-        { data: params }
+        {headers:{auth:auth},data:params}
       )
       .then((d) => {
         getFetchData(pageNumber);
@@ -84,7 +84,7 @@ const MiddleBannerAll = () => {
                 </td>
                 <td className="border border-slate-300 ">{item.link}</td>
                 <td className="border border-slate-300 text-center ">
-                  {item.situation === "true" ? (
+                  {item.situation === true ? (
                     <div className="bg-green-500 text-white py-2 px-3 inline-block rounded-lg">
                       روشن
                     </div>
