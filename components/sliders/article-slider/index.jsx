@@ -26,7 +26,7 @@ const posts=await getData();
             </Link>
          </div>
      
-         <div className='grid grid-cols-4 gap-4'>
+         <div className='grid  gap-4 grid-flow-col auto-cols-[minmax(300px,_2fr)] overflow-x-scroll'>
             {
                     posts.map((post,index)=>(
                             <SlideSection key={index} data={post}/>

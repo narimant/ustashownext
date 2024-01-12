@@ -33,7 +33,7 @@ const ProductSlider = async ({ title, data, link }) => {
         </Link>
       </div>
 
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-flow-col auto-cols-[minmax(300px,_2fr)] overflow-x-scroll gap-4">
         {data.map((item, index) => (
           <SlideSection key={index} data={item} userFavoriteProduct={userData.favoriteProducts}/>
         ))}
