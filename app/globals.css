@@ -25,7 +25,16 @@ body{font-family: Vazirmatn;}
   scroll-snap-align: start;
 }
 
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 @font-face {
   font-family: 'dana';
   font-style: normal;

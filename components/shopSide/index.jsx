@@ -5,7 +5,7 @@ import toFormUrlEncoded from "@/utils/toUrlEncoded";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-const ShopSide = ({ url }) => {
+const ShopSide = ({ url ,setShowModal}) => {
   const [order, setOrder] = useState("");
   const [maxNumber, setMaxsNumber] = useState();
   const [minNumber, setMinNumber] = useState(0);
@@ -57,7 +57,9 @@ const ShopSide = ({ url }) => {
     if (type) {
       url.type = type;
       let toUrlEncoded = toFormUrlEncoded(url);
+      
       router.push(`/shop?${toUrlEncoded}`);
+      setShowModal && setShowModal(false)
     }
   };
 
@@ -81,7 +83,9 @@ const ShopSide = ({ url }) => {
       .get("https://distracted-mcnulty-orq2ubkyw.liara.run/api/get-all-category")
       .then((data) => setCategories(data))
       .catch((err) => console.log(err));
+     
     router.push("/shop");
+    setShowModal && setShowModal(false) 
   };
 
   const selectcategoryHandler = (e) => {
@@ -102,6 +106,7 @@ const ShopSide = ({ url }) => {
     url.categories = selectCat.toString();
     let toUrlEncoded = toFormUrlEncoded(url);
     router.push(`/shop?${toUrlEncoded}`);
+    setShowModal && setShowModal(false)
   };
 
   return (

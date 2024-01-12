@@ -10,7 +10,7 @@ const MiddleBanner =async () => {
     const data=await getData();
     
     return (
-        <div className='container mx-auto grid grid-cols-2 box-content gap-4'>
+        <div className='container mx-auto grid grid-cols-1  md:grid-cols-2  box-content gap-4'>
             {data.map((item,index)=>(
                 
                 <Link href={item.link} key={index} >

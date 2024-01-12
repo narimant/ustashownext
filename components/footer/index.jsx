@@ -13,7 +13,7 @@ const Footer = () => {
   };
   return (
     <footer className="w-full bg-white shadow-light mt-8 dark:bg-slate-700">
-      <div className="container mx-auto grid  grid-cols-3 p-8">
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 p-8">
         <div className="flex flex-col justify-center items-center p-8 text-center  text-sm">
           <Image src="/images/logo.png" width={100} height={80} alt="logo" className="w-auto h-auto" />
           <p className="px-12 pt-4">
@@ -93,7 +93,7 @@ const Footer = () => {
           />
         </div>
       </div>
-      <div className="container mx-auto flex justify-between items-center py-8">
+      <div className="container mx-auto flex justify-between flex-col lg:flex-row items-center py-8">
         <p className="font-extralight text-sm">
           تمامی حقوق مادی و معنوی این قالب متعلق به سایت اوستا شو میباشد
         </p>

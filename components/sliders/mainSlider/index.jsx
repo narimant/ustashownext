@@ -45,7 +45,7 @@ const MainSlider = () => {
                   <SwiperSlide key={index}>
                         <Link href={item.link}>
                   <div className=" rounded-md flex justify-center items-center overflow-hidden ">
-                    <Image src={item.image} width={1920} height={300}   alt={item.imageAlt}/>
+                    <Image src={item.image} width={1920} height={400} className="h-[250px] md:h-[300px] lg:h-[350px] xl:h-[400px] "  alt={item.imageAlt}/>
                   </div>
                   </Link>
                </SwiperSlide>

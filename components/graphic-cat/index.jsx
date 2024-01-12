@@ -9,7 +9,7 @@ const GraphicCat =async () => {
     const data=await getData();
    
     return (
-        <div className='container mx-auto grid grid-cols-4 gap-8'>
+        <div className='container mx-auto grid grid-cols-1 md:grid-cols2 lg:grid-cols-4 gap-8'>
             {
                 data.map((item,index)=>(
                     <Box key={index} title={item.title} paragraf={item.shortDesc} linkHref={item.slug} imageUrl={item.image}/>
