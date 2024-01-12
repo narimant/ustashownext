@@ -26,7 +26,7 @@ const removeKeyword=()=>{
     return (
         <div className="w-full h-48 bg-gradient-to-r bg-purple-300 from-purple-300 to-purple-800 rounded-lg shadow-light">
         <div className="container mx-auto flex justify-center items-center h-full flex-col">
-          <div className="w-1/3 relative ">
+          <div className="w-10/12 lg:w-1/2  relative ">
             <input
               type="text"
               className="py-2 px-5 w-full rounded-lg shadow-light outline-none"

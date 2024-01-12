@@ -26,7 +26,7 @@ const SignePageShop = async ({ params: { slug } }) => {
           </div>
           <SingleHead data={data} />
 
-          <div className="w-full grid grid-cols-3 mt-8 gap-5">
+          <div className="w-full grid grid-cols-1 lg:grid-cols-3 mt-8 gap-5">
             <SingleRightSide data={data} />
 
             <SingleLeftSide />

@@ -20,7 +20,7 @@ const BlogMainSide = async ({ url }) => {
       {data.allPosts.length < 1 ? (
        <Warning title="پستی برای نمایش وجود ندارد " callBacklink="/blog"/>
       ) : (
-        <div className="grid grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {data.allPosts.map((product, index) => (
             <BlogSlider key={index} data={product} />
           ))}

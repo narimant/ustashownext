@@ -43,7 +43,7 @@ const RelatedPost = ({ relatedPostData, model }) => {
 
       {model === "post" ? (
 
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-flow-col auto-cols-[minmax(300px,_2fr)] overflow-x-scroll gap-4 scrollbar-hide">
 
           {posts[0]!==-1 && (
             <>
@@ -86,10 +86,10 @@ const RelatedPost = ({ relatedPostData, model }) => {
                   {post.shortDesc}
                 </div>
                 <div className="flex justify-between items-center m-3 border-t text-xs py-4">
-                  <div className="flex justify-start bg-gray-200 py-1 px-2 rounded-lg">
+                  <div className="flex justify-start dark:bg-transparent bg-gray-200 py-1 px-2 rounded-lg">
                     {post.updatedAt}
                   </div>
-                  <div className="flex justify-end items-center   bg-gray-200 py-1 px-2 rounded-lg">
+                  <div className="flex justify-end items-center dark:bg-transparent  bg-gray-200 py-1 px-2 rounded-lg">
                     {post.pageView}
                   </div>
                 </div>
@@ -102,7 +102,7 @@ const RelatedPost = ({ relatedPostData, model }) => {
         </div>
       ) : (
      <> {posts[0]!==-1 && (
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-flow-col auto-cols-[minmax(300px,_2fr)] overflow-x-scroll gap-4 scrollbar-hide">
       {posts.map((post, index) => (
         <div
           key={index}

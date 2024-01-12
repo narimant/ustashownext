@@ -32,7 +32,7 @@ const CommentList = ({commentPorops}) => {
     },[])
 
     return (
-        <div className="bg-white h-auto rounded-lg shadow-light p-5 border-gray-700 mt-5">
+        <div className="bg-white dark:bg-slate-600 h-auto rounded-lg shadow-light p-5 border-gray-700 mt-5">
         <h3 className="w-full text-xl font-medium relative"><span>نظرات</span> <span className=' py-1 px-2  border-b-red-400 border-b absolute  text-xs font-extralight   '>{count}</span></h3>
             {
             loader==true? 

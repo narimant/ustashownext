@@ -33,8 +33,8 @@ if(!_id){
       </div>
       <div className="container grid grid-cols-3 gap-5">
         {/* -------------main side----------- */}
-        <div className="col-span-2">
-          <div className="bg-white rounded-lg shadow-light p-5 border-gray-700">
+        <div className="col-span-3 lg:col-span-2">
+          <div className="bg-white dark:bg-slate-600 dark:text-white rounded-lg shadow-light p-5 border-gray-700">
             <h1 className="text-2xl border-b border-gray-200 pb-6 ">
            {title}
             </h1>
@@ -64,7 +64,7 @@ if(!_id){
               />
              
             </div>
-            <div className="leading-9 text-zinc-700 font-light font-dana text-xl">
+            <div className="leading-9 text-zinc-700 dark:text-white font-light font-dana text-xl">
             <div>
        
                 <p className="font-Vazirmatn" dangerouslySetInnerHTML={{ __html: body }}></p>
@@ -77,7 +77,7 @@ if(!_id){
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-light px-5 pb-3 border-gray-700">
+          <div className="bg-white dark:bg-slate-600 rounded-lg shadow-light px-5 pb-3 border-gray-700">
            <RelatedPost relatedPostData={relatedPosts} model="post"/>
           </div>
           

@@ -7,7 +7,7 @@ const MobileFilter = ({ searchParams }) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <div className="flex w-full py-5 mb-5 justify-start items-center gap-5 border-b dark:border-slate-600 border-gray-200">
+      <div className="flex w-full py-5 px-5 mb-5 justify-start items-center gap-5 border-b dark:border-slate-600 border-gray-200">
       <span><BsFilterRight size={25}/></span>
         <button onClick={() => setShowModal(true)}>فیلترها</button>
       </div>

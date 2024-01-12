@@ -24,8 +24,9 @@ const SingleHead =async ({data}) => {
     return (
         <div className="container w-full">
         {/* -------------head section----------- */}
-        <div className="grid grid-cols-2 gap-8">
-          <div className="flex flex-col justify-between">
+        <div className="grid grid-cols-1  lg:grid-cols-2 gap-8">
+          <div className="order-2 lg:order-1">
+          <div className="flex flex-col justify-between ">
             <div>
               <h1 className="text-4xl font-bold  pb-6 ">
              {data.title}
@@ -38,10 +39,12 @@ const SingleHead =async ({data}) => {
 
               <AddToCartButton productId={data._id}  userCart={userData.cart}/>
              
-              <span className="font-dana text-lg">{data.price} هزار تومان</span>
+              <span className="font-dana text-lg">{data.price}  تومان</span>
             </div>
           </div>
-          <div>
+          </div>
+       
+          <div className="order-1 lg:order-2" >
             <Image
               src={data.image}
               width={600}

@@ -13,21 +13,21 @@ const SingleRightSide = ({ data }) => {
       {/* ----right section---- */}
       <div className="flex flex-col gap-5">
         <div className="grid grid-cols-3 gap-5 ">
-          <div className="flex justify-start items-center bg-white rounded-lg shadow-light p-5">
+          <div className="flex justify-start items-center dark:bg-slate-600 bg-white rounded-lg shadow-light p-5">
             <IoMdBrush size={30} className="text-purple-600 m-5" />
             <div className="*:p-1">
               <h4 className="text-lg font-semibold ">فرمت فایل</h4>
               <p className="text-sm ">PSD</p>
             </div>
           </div>
-          <div className="flex justify-start items-center bg-white rounded-lg shadow-light p-5">
+          <div className="flex justify-start items-center dark:bg-slate-600 bg-white rounded-lg shadow-light p-5">
             <IoResizeOutline size={30} className="text-purple-600 m-5" />
             <div className="*:p-1">
               <h4 className="text-lg font-semibold ">ایعاد فایل</h4>
               <p className="text-sm ">1920*720 px</p>
             </div>
           </div>
-          <div className="flex justify-start items-center bg-white rounded-lg shadow-light p-5">
+          <div className="flex justify-start items-center dark:bg-slate-600 bg-white rounded-lg shadow-light p-5">
             <BsFiles size={30} className="text-purple-600 m-5" />
             <div className="*:p-1">
               <h4 className="text-lg font-semibold ">حجم فایل</h4>
@@ -36,17 +36,17 @@ const SingleRightSide = ({ data }) => {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-light p-5 border-gray-700">
+        <div className="bg-white dark:bg-slate-600  rounded-lg shadow-light p-5 border-gray-700">
           <h1 className="text-2xl  border-gray-200 pb-6 ">توضیخات</h1>
 
-          <div className="leading-9 text-zinc-700 font-light font-dana text-xl">
+          <div className="leading-9 dark:text-white text-zinc-700 font-light font-dana text-xl">
          
             <p className="font-Vazirmatn" dangerouslySetInnerHTML={{ __html: data.body }}></p>
           </div>
         </div>
 
 
-        <div className="bg-white rounded-lg shadow-light px-5 pb-3 border-gray-700">
+        <div className="bg-white dark:bg-slate-600 rounded-lg shadow-light px-5 pb-3 border-gray-700">
            <RelatedPost relatedPostData={data.relatedProducts} model="product"/>
           </div>
       </div>

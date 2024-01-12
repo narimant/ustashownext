@@ -82,14 +82,14 @@ const router=useRouter();
   };
 
   return (
-    <div className="container mx-auto bg-white shadow-light rounded-lg  p-5 mt-5">
+    <div className="container dark:bg-slate-600 mx-auto bg-white shadow-light rounded-lg  p-5 mt-5">
       <h1 className="text-xl border-b p-5 mb-5">جزییات سبد خرید شما</h1>
       {cartData[0] === -1 ? (
         <div className="flex justify-center items-center">
           <div className="loader-blue h-10 w-10 my-10"></div>
         </div>
       ) : cartData.length > 0 ? (
-        <div className="w-1/2 mx-auto flex flex-col gap-5">
+        <div className="w-10/12 lg:w-1/2 mx-auto flex flex-col gap-5">
           {cartData.map((item, index) => (
             <div
               key={index}

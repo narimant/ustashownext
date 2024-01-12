@@ -52,7 +52,7 @@ const Comment = ({commentPorops}) => {
       }
     };
     return (
-        <div className="bg-white h-auto rounded-lg shadow-light p-5 border-gray-700 mt-5">
+        <div className="bg-white dark:bg-slate-600 h-auto rounded-lg shadow-light p-5 border-gray-700 mt-5">
           {auth ? (
               <div className='min-h-20'>
               <InputElement
@@ -61,6 +61,7 @@ const Comment = ({commentPorops}) => {
               id="body"
               state={comment}
               setState={setComment}
+              
             />
             <div>
               <button

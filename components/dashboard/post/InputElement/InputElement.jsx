@@ -31,7 +31,7 @@ const InputElement = ({
           id={id}
           rows="5"
           cols="33"
-          className={`bg-gray-100 rounded-lg w-full outline-none py-3 px-3 ${direction} `}
+          className={`bg-gray-100 dark:bg-slate-800 rounded-lg w-full outline-none py-3 px-3 ${direction} `}
         ></textarea>
       )}
     </div>

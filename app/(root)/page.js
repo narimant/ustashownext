@@ -16,7 +16,7 @@ export default async function Home() {
 
   return (
     <>
-      <main>
+      <main className="px-3">
         <div className="my-8">
           <MainSlider />
         </div>
